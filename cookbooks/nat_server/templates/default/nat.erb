@@ -1,2 +1,2 @@
 *nat
--A POSTROUTING -s <%=node["vpc"]["cidr"]%> -j MASQUERADE -d 0.0.0.0/0
+-A POSTROUTING -s <%=node["vpc"]["cidr"]%>/<%={node["vpc"]["nat_netmask"]%> -j MASQUERADE -d 0.0.0.0/0
