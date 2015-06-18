@@ -1,0 +1,10 @@
+{
+  "id"        : "yuva",
+  "comment"   : "yuva",
+  "home"      : "/home/yuva",
+  "groups"    : ["internal","staging"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDeaTmYFtPOe6cMXpzaPmIbKr/pXBdc2NC/2wrH0gF02IM5Vfe/A7Znyt1Jh+KVfIUYng45ai02jwViDI5OLE89aU4wGg01AoSoxIjWSMtK57Gq/nY4YCiBfgLqoqSyTj9K6khxs3AKSMro1dAORt67XIyj/4KCTSr/lnrTo0NIBwWn92GxceTc1ZCIoOJnet3zM0efQErwwE1bO9PhFy3sOkib7yrzV49luDmxwtXasrMPG6LHpInqbWpDK2XNOMBvAYoA5+eOKbabaDOjpYcjSd1Mqsuts1RQOM7+RbtRAys3cJLatUSPO+5Dxw5Hd7OkD+5GCOsCk34UQUqIl1IT"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id"        : "deepak",
+  "comment"   : "deepak",
+  "home"      : "/home/deepak",
+  "groups"    : ["internal","staging"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAzK+2P+p/dovMN3PP0VQAnpwA/X2RtUliVw3dKWxmazqWlEXQDqJSUevxsgGaqoj61obv5ft6DFw84XiVX2SFwHyUPeiTWKYe0PdhV8U6B2awvQ68nEDB2J0p4z5r5OYcQNvP/PncHRhFe3T21EcHRH6a9yt+7WBtd00ZzsA3u7w9UO+6LZhR0B4N/6ihJVxZMRbpUof4/RbekSLJOcIkO6mfGuflZAhcDoojk6QKWjBojpBekt/8jGvLntEJcwMVJk0k5hVvh0dizS+71hsDki8VTNRi1ii4M4tT5jC0h9DQwR81PhJYZrNEORlKcrhcJeKILn5LPcVCyuPP23QPVQ=="
+  ]
+}

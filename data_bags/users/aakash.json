@@ -1,0 +1,10 @@
+{
+  "id"        : "aakash",
+  "comment"   : "aakash",
+  "home"      : "/home/aakash",
+  "groups"    : ["sysadmin","internal","staging","production"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEArE3UOnxUGeK9k9IVPmSbPun7RxJImeOi8MPQTBx6HTctb50xkuBgrMDdT8F7bgH39icx2U8RB6ZvNg7QsHMhexJF36hYs1Y/ucS/O/ebxaKo/vzscjAn/E21JjeV/AJkohswwDCJy3OhneYgOwDWaMThUbyiU7U1EgaUGTgnavIEM2jgJvlzEtBD1blg7aPdQnmjfdtyYMGaRYLDvZAXic/Bk3HgWMuhEWcjkgDIkmmbgPvGzjnvZnJcA73rNqWXFfE61JSKQop1F1H1xpGc+1SSlrdVvP98qYC/6o2Hm0aHINYiaruJ0sotxTJXCdLUvKCF4+U2KTd35zAcbc9zsw== aakashd@gmail.com"
+  ]
+}
