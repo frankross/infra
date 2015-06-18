@@ -1,0 +1,8 @@
+DEPENDENCIES
+  nat_server
+    path: cookbooks/nat_server
+
+GRAPH
+  iptables (1.0.0)
+  nat_server (0.1.2)
+    iptables (>= 0.0.0)

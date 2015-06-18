@@ -1,0 +1,28 @@
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+logs/
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+
+#certificates and .chef
+
+certificates/
+.chef
+.vagrant/
+vendor/
+.DS_Store
+.idea
