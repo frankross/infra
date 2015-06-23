@@ -32,3 +32,8 @@ openvpn_conf 'server' do
   dhcp_dns node["dns"]["server"]
   notifies :restart, 'service[openvpn]', :delayed
 end
+
+begin
+  r = resources(:template => "/etc/openvpn/easy-rsa/Rakefile")
+  r.source "Rakefile.erb"
+end
