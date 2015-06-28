@@ -24,3 +24,5 @@ node["ci"]["ruby_version"].each do | ruby|
     end
   end
 end
+
+include_recipe "go-ci::db_server"

@@ -3,37 +3,43 @@
   <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="8f4b8e69-ada7-40e3-be81-e561a6e7debc" />
   <pipelines group="emami">
     <%@pipelines.each do |project|%>
-      <pipeline name="<%=project["name"]%>">
-        <materials>
-          <git url="<%=project["vcs_root"]%> branch=<%=project["vcs_branch"]%>"/>
-        </materials>
-        <%project["stages"].each do |project_stage|%>
-          <stage name="<%=project_stage["name"]%>">
-            <jobs>
-              <%project_stage["jobs"].each do |stage_job|%>
-                <job name="<%=stage_job["name"]%>">
-                  <% if stage_job["env_variable"] != nil%>
-                    <environmentvariables>
-                      <%stage_job["env_variable"].each do |env|%>
-                        <variable name="<%=env["name"]%>">
-                          <value>"<%=env["value"]%>"</value>
-                        </variable>
-                      <%end%>
-                    </environmentvariables>
-                  <% end %>
-                  <tasks>
-                    <%stage_job["tasks"].each do |job_tasks|%>
-                      <exec command= "<%=job_tasks["command"]%>">
-                        <arg><%=job_tasks["arguments"]%></arg>
-                      </exec>
-                    <%end%>
-                  </tasks>
-                </job>
+    <pipeline name="<%=project["name"]%>">
+      <materials>
+        <git url="<%=project["vcs_root"]%>" branch="<%=project["vcs_branch"]%>" />
+      </materials>
+      <%project["stages"].each do |project_stage|%>
+      <stage name="<%=project_stage["name"]%>">
+        <jobs>
+        <%project_stage["jobs"].each do |stage_job|%>
+          <job name="<%=stage_job["name"]%>">
+          <% if stage_job["env_variable"] != nil%>
+            <environmentvariables>
+              <%stage_job["env_variable"].each do |env|%>
+              <variable name="<%=env["name"]%>">
+                <value><%=env["value"]%></value>
+              </variable>
               <%end%>
-            </jobs>
-          </stage>
+            </environmentvariables>
+          <% end %>
+            <tasks>
+              <%stage_job["tasks"].each do |job_tasks|%>
+              <exec command="<%=job_tasks["command"]%>">
+                <%job_tasks["arguments"].split(" ").each do |arg|%>
+                <arg><%=arg%></arg>
+                <%end%>
+              </exec>
+              <%end%>
+            </tasks>
+          </job>
         <%end%>
-      </pipeline>
+        </jobs>
+      </stage>
+      <%end%>
+    </pipeline>
     <%end%>
   </pipelines>
+  <agents>
+    <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="f3ecf473-3b2b-4507-9387-9a44af569b10" />
+  </agents>
 </cruise>
+

@@ -1,0 +1,6 @@
+if psql -U postgres -c "select * from pg_user where usename='$1'";then
+  echo "user already created"
+else
+  createuser -U postgres --no-superuser --createdb --no-createrole -sw $1;
+  su - postgres -c "psql -U postgres -d postgres -c \"alter user $1 with password $2;\"";
+fi
