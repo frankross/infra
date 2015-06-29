@@ -1,6 +1,7 @@
 define :_install_awscli do
 
   home=params[:home] || "/root"
+  user=params[:user] || "root"
 
   ["python","python-pip","jq"].each do |pkg|
     package pkg do
@@ -19,6 +20,7 @@ define :_install_awscli do
 
   directory "#{home}/.aws" do
     action :create
+    user user
   end.run_action(:create)
 
   aws_creds = data_bag_item("aws", "s3cmd")
@@ -32,5 +34,6 @@ define :_install_awscli do
       secret_key: aws_creds['secret_key']
     )
     cookbook 'library'
+    user user
   end.run_action(:create)
 end

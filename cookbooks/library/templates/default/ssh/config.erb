@@ -1,0 +1,6 @@
+<%@apps.each do |app|%>
+  Host <%= app%>
+  IdentityFile ~/.ssh/<%=app%>
+  User git
+  Hostname github.com
+<%end%>

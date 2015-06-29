@@ -1,0 +1,11 @@
+#!/usr/bin/env puma
+
+directory "<%=@app_location%>/current"
+environment '<%=@node.chef_environment%>'
+daemonize
+pidfile '<%=@app_location%>/shared/pids/puma.pid'
+state_path '<%=@app_location%>/shared/pids/puma.state'
+threads 0, 32
+bind 'unix:<%=@app_location%>/shared/sockets/puma.sock'  # Unicorn because of weird hacky ways of doing opsworks
+workers <%=node.cpu.total%>
+preload_app!

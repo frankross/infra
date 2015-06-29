@@ -1,0 +1,110 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:  puma
+# Required-Start:$all
+# Required-Stop: $all
+# Default-Start: 2 3 4 5
+# Default-Stop:  0 1 6
+# Short-Description: puma application service
+# Description:  puma application service
+### END INIT INFO
+
+APP_USER="<%=@user%>"
+APP_GROUP="<%=@group%>"
+APP="puma"
+APP_PATH="<%=@project_path%>/current"
+PID_FILE="<%=@project_path%>/shared/pids/puma.pid"
+DAEMON_OPTS="-C <%=@project_path%>/current/config/puma.rb"
+
+eecute() {
+  sudo -u $APP_USER -H bash -l -c "$1"
+}
+
+start() {
+    cd $APP_PATH
+    if [ -f $PID_FILE ]; then
+      echo "Process for $APP is dead but pid file exists $PID_FILE"
+    fi
+
+    su - $APP_USER -c "cd $APP_PATH;PATH=<%=@ruby_bin%>:$PATH RAILS_ENV=<%=@env%> bundle exec puma $DAEMON_OPTS"
+
+    if [ $? -eq 0 ]; then
+        sleep 2
+        echo "$APP started successfully with PID " `cat $PID_FILE`
+        # registering app with load balancer
+        <%@load_balancer.each do |lb|%>
+          <%="aws elb register-instances-with-load-balancer --load-balancer-name #{lb}  --instances #{@instance_id}"%>
+        <% end%>
+    else
+        echo "$APP could not start. Please check logs."
+        fi
+}
+
+stop() {
+    if [ -f $PID_FILE ]; then
+      PID=`cat $PID_FILE`
+      echo "Stopping $APP process with PID: " $PID
+      # taking app out of load balancer
+        <%@load_balancer.each do |lb|%>
+          <%="aws elb deregister-instances-from-load-balancer --load-balancer-name #{lb}  --instances #{@instance_id}"%>
+        <% end%>
+      kill $PID
+#      sleep 1
+#      if [ $(ps aux | grep $PID | wc -l) -eq 2 ]; then
+        echo "$APP gracefull shutdown failed. Killing $APP now."
+        kill -9 $PID
+#      fi
+      $([ -f "$PID_FILE" ]) && rm -f $PID_FILE || echo "Removing pid file $PID_FILE."
+    else
+      echo "No PID file exists for $APP process..."
+      if [ $(ps aux |grep 'puma' | grep -v 'init.d' | grep -v grep | wc -l) -eq 0 ];then
+         echo "Application $APP is already stopped ";else
+         echo "Stopping $APP process"
+         ps aux | grep 'puma'|grep -v init.d| grep -v service |grep -v grep | awk '{print $2}' | xargs kill -SIGKILL
+      fi
+    fi
+}
+
+case "$1" in
+  start)
+    echo "Starting $APP"
+    start
+    echo "$APP started."
+    ;;
+
+  stop)
+    echo "Stopping $APP"
+    stop
+    echo "$APP stopped."
+    ;;
+
+  restart)
+    echo  "Restarting $APP."
+    stop
+ #   sleep 2
+    start
+    echo "$APP restarted."
+    ;;
+
+  status)
+    if [ -f $PID_FILE ]; then
+      ps -p `cat $PID_FILE` &> /dev/null
+      if [ $? != 0 ]; then
+        echo "Process for $APP is dead but pid file $PID_FILE."
+      else
+        echo  "Application $APP is running with pid: " `cat $PID_FILE`
+      fi
+    else
+        echo  "Application $APP is stopped."
+    fi
+    ;;
+
+  *)
+    service_name=/etc/init.d/$APP
+    echo "Usage: $service_name {start|stop|restart|status}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0
