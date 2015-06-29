@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="74">
-  <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="8f4b8e69-ada7-40e3-be81-e561a6e7debc" />
-  <pipelines group="emami">
-    <%@pipelines.each do |project|%>
+  <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="2802dca1-d00f-4bb1-9c00-2b2429860da7" />
+  <%@pipeline_group.each do |pipeline_group|%>
+  <pipelines group="<%=pipeline_group["name"]%>">
+    <%pipeline_group["pipelines"].each do |project|%>
     <pipeline name="<%=project["name"]%>">
       <materials>
         <git url="<%=project["vcs_root"]%>" branch="<%=project["vcs_branch"]%>" />
@@ -27,6 +28,9 @@
                 <%job_tasks["arguments"].split(" ").each do |arg|%>
                 <arg><%=arg%></arg>
                 <%end%>
+              <% if job_tasks["run_if"]%>
+                <runif status="<%=job_tasks["run_if"]%>" />
+              <%end%>
               </exec>
               <%end%>
             </tasks>
@@ -38,8 +42,10 @@
     </pipeline>
     <%end%>
   </pipelines>
+  <%end%>
   <agents>
-    <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="f3ecf473-3b2b-4507-9387-9a44af569b10" />
+    <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="79ddc648-dddf-47a8-9cb9-a94f8bb92d97" />
+    <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="bca1d94a-de51-423c-8254-50e4945efe4a" />
   </agents>
 </cruise>
 

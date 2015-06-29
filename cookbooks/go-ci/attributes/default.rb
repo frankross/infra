@@ -1,4 +1,4 @@
-default["ci"]["ruby_version"] = ["2.1.5"]
+default["ci"]["ruby_version"] = ["2.1.5","2.2.2"]
 default["ci"]["ruby_gems"]    = ["bundle"]
 if node.platform_family == "rhel"
   override['postgresql']['client']['packages']  = %w{postgresql-devel}
@@ -17,3 +17,4 @@ elsif node.platform_family == "debian"
     {:type => 'host', :db => 'all', :user => 'all', :addr => '::1/128', :method => 'md5'}
   ]
 end
+default["go"]["home"]                           ="/var/go"

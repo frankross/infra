@@ -26,3 +26,9 @@ node["ci"]["ruby_version"].each do | ruby|
 end
 
 include_recipe "go-ci::db_server"
+
+_git_setup "setup git" do
+  user "go"
+  user_home node["go"]["home"]
+  apps node["ci"]["jobs"].map {|x| x["name"]}
+end
