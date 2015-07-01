@@ -1,0 +1,45 @@
+global
+maxconn 15000 # Max simultaneous connections from an upstream server
+spread-checks 5 # Distribute health checks with some randomness
+log 127.0.0.1 local0 info
+log 127.0.0.1 local1 notice
+debug # Uncomment for verbose logging
+user haproxy
+stats socket    /tmp/haproxy
+
+defaults # Apply to all services
+log global
+mode http
+balance roundrobin
+option abortonclose
+option httpclose
+option forwardfor
+option redispatch
+option httplog
+timeout client 60s
+timeout connect 9s
+timeout server 120s
+timeout check 5s
+stats enable
+stats uri /stats # Real path redacted
+stats realm Haproxy\ Statistics
+stats auth <%= @stats_user %>:<%= @stats_password %>
+  monitor-uri /monitor # Returns 200 if we're up; real path redacted
+  errorfile 503 /etc/haproxy/errors/503.html
+
+  frontend incoming
+  option httplog
+  bind *:80
+  reqadd X-Forwarded-Proto:\ http
+  <% @frontend_servers.each do |server|%>
+    <%= "acl #{server[:name]} hdr_dom(host) -i #{server[:cname]}"%>
+    <%= "use_backend #{server[:name]} if #{server[:name]}"%>
+  <% end %>
+
+  <% @frontend_servers.each_with_index do |server,frontend_index|%>
+    backend <%= server[:name]%> :80
+    option httpchk GET / HTTP/1.1\r\nHost:\ <%= server[:cname] %>
+  <% server[:backend_servers].each_with_index do |backend_server,backend_index|%>
+    <%="server #{backend_server.name} #{backend_server.ipaddress}:80 check inter #{7000+(rand((frontend_index*10+backend_index)*100)+rand(50)*100).to_i} fastinter 2000 downinter 2000 fall 2 weight 1"%>
+  <% end %>
+<% end %>

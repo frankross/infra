@@ -1,0 +1,10 @@
+ENI=`aws ec2 describe-network-interfaces --filters Name=addresses.private-ip-address,Values=<%= @node.ipaddress %> | jq ."NetworkInterfaces"[0]".NetworkInterfaceId" | sed 's/\"//g'`
+aws ec2 assign-private-ip-addresses --network-interface-id $ENI --secondary-private-ip-address-count 1
+
+INSTANCEID=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
+IPADDRESS=`aws ec2 describe-instances --instance-ids $INSTANCEID | jq ".Reservations"[0]".Instances"[0]".NetworkInterfaces"[0]".PrivateIpAddresses"[1]".PrivateIpAddress" |sed 's/"//g'`
+echo "auto eth0:1
+iface eth0:1 inet static
+address $IPADDRESS
+netmask 255.255.255.0" > /etc/network/interfaces.d/eth0:1.cfg
+sudo ifup eth0:1
