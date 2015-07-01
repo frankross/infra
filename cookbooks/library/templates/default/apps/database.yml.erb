@@ -1,4 +1,4 @@
-<%=node.chef_environment%>:
+production:
   adapter: <%=@adapter%>
   encoding: <%=@encoding%>
   database: <%= @database%>
@@ -6,6 +6,4 @@
   username: <%= @username%>
   password: <%= @password%>
   host: <%= @host%>
-  reconnect: <%= @reconnect %>
-  prepared_statements: <%=@prepared_statements %>
   port: <%= @port %>

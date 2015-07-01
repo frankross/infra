@@ -23,7 +23,7 @@ define :_install_awscli do
     user user
   end.run_action(:create)
 
-  aws_creds = data_bag_item("aws", "s3cmd")
+  aws_creds = data_bag_item("aws", "awscli")
 
   template "#{home}/.aws/config" do
     source "awscli/aws_config.erb"

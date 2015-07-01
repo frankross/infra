@@ -21,11 +21,12 @@ define :_app_servers do
 
   # nginx.conf.erb should be in cookbook which is calling this definition
   template "/etc/nginx/conf.d/#{app}.conf" do
-    source "nginx/nginx.conf.erb"
+    source "app_servers/nginx.conf.erb"
     variables(app_name: app)
     owner app_user
     group app_group
     mode "400"
+    cookbook "library"
     notifies :reload, "service[nginx]"
   end
 
@@ -34,12 +35,9 @@ define :_app_servers do
     owner app_user
     group app_group
     variables(app_location: app_location)
-    cookbook "library-opsworks"
+    cookbook "library"
     notifies :restart, "service[#{app_service}]"
   end
-
-  instance_id   = `curl -s http://169.254.169.254/latest/meta-data/instance-id`
-  load_balancer = node[app][:load_balancer]
 
   template "/etc/init.d/#{app_service}" do
     source "apps/service.erb"
@@ -52,11 +50,9 @@ define :_app_servers do
               env: node.chef_environment,
               project_path: app_location,
               ruby_bin: node.ruby.bin_location,
-              instance_id: instance_id,
-              load_balancer: load_balancer
              )
     notifies :restart, "service[#{app_service}]", :delayed
-    cookbook "library-opsworks"
+    cookbook "library"
   end
 
   service app_service do

@@ -1,0 +1,15 @@
+{
+  "id": "ecom-platform",
+  "staging": {
+    "adapter": "postgresql",
+    "database": "ecom_platform_staging",
+    "encoding": "utf8",
+    "host": "postgres-staging.cz9oxdaqfgri.ap-southeast-1.rds.amazonaws.com",
+    "username": "ecom-platform",
+    "password": "emami123",
+    "reconnect": true,
+    "port": 5432,
+    "prepared_statements": false,
+    "pool": "16"
+  }
+}

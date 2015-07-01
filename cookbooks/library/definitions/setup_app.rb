@@ -22,7 +22,7 @@ define :setup_app do
     apps [app]
   end
 
-  ['libxml2-dev','libxslt1-dev','libpcre3-dev',"libqt4-dev","zlib1g-dev","build-essential","libpq-dev","libpq5"].each do |pkg|
+  ['libxml2-dev','libxslt1-dev','libpcre3-dev',"libqt4-dev","zlib1g-dev","build-essential","libpq-dev","libpq5","nodejs"].each do |pkg|
     package pkg
   end
 
@@ -45,27 +45,19 @@ define :setup_app do
   latest_sha   = `su - #{app_user} -c "git ls-remote #{node[app]['vcs_address']} --heads #{node[app]['vcs_branch']}" | awk '{print $1}'`.split("\n")[0]
   current_sha  = File.open("#{app_location}/current/.git/refs/heads/deploy", "r").read.delete!("\n") if Dir.exists?("#{app_location}/current")
 
-  require 'byebug'
-  byebug
-
   git "#{app_location}/releases/#{latest_sha}" do
     repository node[app]['vcs_address']
     revision node[app]['vcs_branch']
     action :checkout
     user app_user
     group app_group
-    #notifies :restart, "service[#{app_service}]", :delayed
+    notifies :restart, "service[#{app_service}]", :delayed
     not_if { latest_sha == current_sha}
   end
 
   execute "delete older releases" do
     command "ls -lt | tail -n+$((#{node.apps.max_number_of_release_dirs}+2)) | awk '{print $9}' | xargs -I{} rm -rf #{node.apps.location}/releases/{}"
     cwd "#{node.apps.location}/releases"
-  end
-
-  s3_package_install "ruby" do
-    source node["ruby"]["s3_location"]
-    not_if "which ruby"
   end
 
   template "/etc/profile.d/ruby.sh" do
@@ -100,4 +92,12 @@ define :setup_app do
     cwd "#{app_location}/current"
   end
 
+  template "/etc/default/#{app}.conf" do
+    source "apps/app.conf.erb"
+    owner app_user
+    group app_group
+    cookbook 'library'
+    variables :environment_variables => params[:environment_variables]
+    notifies :restart, "service[#{app_service}]", :delayed
+  end
 end

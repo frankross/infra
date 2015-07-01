@@ -1,5 +1,5 @@
 {
-  "id": "s3cmd",
+  "id": "awscli",
   "secret_key": "64I3WAjcH2t+SSiZUXJZ0MjLUi0az07wvb2I1cK+",
   "access_key": "AKIAJXRZBPR2WQB6A7GA",
   "region":"ap-southeast-1"

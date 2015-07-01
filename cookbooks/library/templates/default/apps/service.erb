@@ -27,15 +27,12 @@ start() {
       echo "Process for $APP is dead but pid file exists $PID_FILE"
     fi
 
-    su - $APP_USER -c "cd $APP_PATH;PATH=<%=@ruby_bin%>:$PATH RAILS_ENV=<%=@env%> bundle exec puma $DAEMON_OPTS"
+    su - $APP_USER -c "cd $APP_PATH;source /etc/default/<%=@app%>.conf;PATH=<%=@ruby_bin%>:$PATH bundle exec puma $DAEMON_OPTS"
 
     if [ $? -eq 0 ]; then
         sleep 2
         echo "$APP started successfully with PID " `cat $PID_FILE`
         # registering app with load balancer
-        <%@load_balancer.each do |lb|%>
-          <%="aws elb register-instances-with-load-balancer --load-balancer-name #{lb}  --instances #{@instance_id}"%>
-        <% end%>
     else
         echo "$APP could not start. Please check logs."
         fi
@@ -46,9 +43,6 @@ stop() {
       PID=`cat $PID_FILE`
       echo "Stopping $APP process with PID: " $PID
       # taking app out of load balancer
-        <%@load_balancer.each do |lb|%>
-          <%="aws elb deregister-instances-from-load-balancer --load-balancer-name #{lb}  --instances #{@instance_id}"%>
-        <% end%>
       kill $PID
 #      sleep 1
 #      if [ $(ps aux | grep $PID | wc -l) -eq 2 ]; then

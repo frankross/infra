@@ -1,7 +1,7 @@
 #!/usr/bin/env puma
 
 directory "<%=@app_location%>/current"
-environment '<%=@node.chef_environment%>'
+environment 'production'
 daemonize
 pidfile '<%=@app_location%>/shared/pids/puma.pid'
 state_path '<%=@app_location%>/shared/pids/puma.state'
