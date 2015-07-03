@@ -13,4 +13,5 @@ end
 
 
 node.default['authorization']['sudo']['passwordless'] = true
+node.override['authorization']['sudo']['groups']= [node.chef_environment, "sysadmin"]
 include_recipe "sudo"
