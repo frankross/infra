@@ -4,7 +4,7 @@ server unix:<%=node.apps.location%>/shared/sockets/puma.sock fail_timeout=0;
 
 server {
   listen 80;
-  server_name <%= @app_name %> <%= node[:hostname] %> <%= node[:ipaddress]%>;
+  server_name <%= @app_name %> <%= node[:ipaddress]%> <%=@cname%>;
 
   keepalive_timeout 5;
 

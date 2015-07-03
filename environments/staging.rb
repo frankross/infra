@@ -4,7 +4,7 @@ description 'staging environment file'
 override_attributes(
 
   "ecom-platform" => {
-    "cname" => 'ecom-staging.emami.vpc',
+    "cname" =>'frankross.c42.in',
     "environment_variables" => {
       :SECRET_KEY_BASE =>'d731f261415e6f13e3e3e5a6726ee163707938f38514331fc2a67eda3800dd428bfe2a0c3b4ed83cf99e7df643e93b450511f81e05556712128ae786559ad',
       :AWS_ACCESS_KEY_ID=>"AKIAJXRZBPR2WQB6A7GA",
@@ -26,7 +26,7 @@ override_attributes(
     :frontend_servers => [
       {
         name: 'ecom-platform',
-        cname:'ecom-staging.emami.vpc'
+        cname:'frankross.c42.in'
       }
     ]
   },

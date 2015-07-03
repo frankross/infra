@@ -18,6 +18,7 @@ define :setup_app do
 
   _git_setup "setup git" do
     user app_user
+    group app_user
     user_home app_user_home
     apps [app]
   end
@@ -58,12 +59,6 @@ define :setup_app do
   execute "delete older releases" do
     command "ls -lt | tail -n+$((#{node.apps.max_number_of_release_dirs}+2)) | awk '{print $9}' | xargs -I{} rm -rf #{node.apps.location}/releases/{}"
     cwd "#{node.apps.location}/releases"
-  end
-
-  template "/etc/profile.d/ruby.sh" do
-    source "ruby_path_variable.sh.erb"
-    variables(ruby_bin_location: node['ruby']['bin_location'])
-    cookbook 'library'
   end
 
   link "#{app_location}/current" do
