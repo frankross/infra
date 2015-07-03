@@ -25,7 +25,7 @@
             <tasks>
               <%stage_job["tasks"].each do |job_tasks|%>
               <exec command="<%=job_tasks["command"]%>">
-                <%job_tasks["arguments"].split(" ").each do |arg|%>
+                <%job_tasks["arguments"].split("\n").each do |arg|%>
                 <arg><%=arg%></arg>
                 <%end%>
               <% if job_tasks["run_if"]%>

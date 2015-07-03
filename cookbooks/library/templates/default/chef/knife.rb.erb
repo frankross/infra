@@ -1,0 +1,16 @@
+chef_config_path = '<%= @chef_config_path %>'
+
+log_level                :info
+log_location             STDOUT
+node_name                '<%=@user%>'
+validation_client_name   'chef-validator'
+client_key               "#{chef_config_path}/<%=@user%>.pem"
+validation_key           "#{chef_config_path}/chef-validator.pem"
+syntax_check_cache_path  "#{chef_config_path}/syntax_check_cache"
+chef_server_url          '<%= @chef_server_url%>'
+
+knife[:cookbook_path]         ="#{chef_config_path}/../jobs/devops/workspace/cookbooks"
+
+knife[:aws_access_key_id]     = '<%=@access_key%>'
+knife[:aws_secret_access_key] = '<%=@secret_key%>'
+

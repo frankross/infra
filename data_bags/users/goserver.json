@@ -1,0 +1,10 @@
+{
+  "id"        : "goserver",
+  "comment"   : "goserver",
+  "home"      : "/home/goserver",
+  "groups"    : ["staging","internal"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5Rou6GLZ1rVZQxjIiBw5nRfl2GrUOKnZnmuPwjSCnijRjlCSDDEXOCVoom5e3hWcg+HxaLQBjbOqjDnfXpeJao7c/6xOeculnmwi5Ox74fXDrpcuy2Z0bH8AYLeokuth7Qo6x8Sx8clWZgSpUZdXVtQVvd7vHSCV875kRbad7yOtCj015XO6wb5TuqDy7Z7cLWriYiheEN5+bVK4VImkUi0jQIiv3RgOYhtHqQ0PZATysy+E1b3d+HYh4YKxLN3po8lIU3dx2mrMaOE8Oi6nvS0hws//4px1SatWYHW9UEy1gKhseraoBQ3O7fstllBKwJU9HfayBfx/3BbssE7B9 goserver"
+  ]
+}

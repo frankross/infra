@@ -29,6 +29,18 @@ include_recipe "go-ci::db_server"
 
 _git_setup "setup git" do
   user "go"
+  group "go"
   user_home node["go"]["home"]
   apps node["ci"]["jobs"].map {|x| x["name"]}
+end
+
+knife_setup "ci"  do
+  chef_user "go"
+  chef_group "go"
+  knife_user "goserver"
+  chef_dir node["go"]["home"]
+end
+
+execute "download private key" do
+  command "su - go -c 'aws s3 cp #{node["ci"]["bucket"]}/deploy_keys/go-ssh  #{node["go"]["home"]}/.ssh/id_rsa;chmod 400  #{node["go"]["home"]}/.ssh/id_rsa'"
 end
