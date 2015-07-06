@@ -4,7 +4,7 @@ maintainer_email 'vipul@codeignition.co'
 license          'All rights reserved'
 description      'Installs/Configures openvpn'
 long_description 'Installs/Configures openvpn'
-version          '0.0.2'
+version          '0.0.3'
 
 depends 'openvpn'
 depends 'library'
