@@ -1,6 +1,5 @@
 define :_asset_precompile do
 
-  app                   = params[:name]
   app_user              = node.apps[:user]
   app_group             = node.apps[:group]
   app_location          = params[:app_location]
@@ -29,8 +28,4 @@ define :_asset_precompile do
     environment env
   end
 
-  execute "sync assets" do
-    cwd "#{app_location}/current"
-    command "su - #{app_user} -c 'aws s3 sync --acl public-read #{cwd}/public/ #{node["assets"]["s3_bucket"]}/'"
-  end
 end

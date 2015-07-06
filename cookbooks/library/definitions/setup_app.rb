@@ -80,8 +80,10 @@ define :setup_app do
     group app_group
   end
 
-  s3_package_install "ruby" do
-    source node["ruby"]["s3_location"]
+  execute "ruby-install" do
+    command "aws s3 cp #{node["ruby"]["s3_location"]} ./;dpkg -i *.deb"
+    cwd Chef::Config['file_cache_path']
+    not_if "dpkg -l | grep ruby"
   end
 
   execute "install bundler" do
@@ -103,5 +105,6 @@ define :setup_app do
     cookbook 'library'
     variables :environment_variables => params[:environment_variables]
     notifies :restart, "service[#{app_service}]", :delayed
+    only_if { params[:environment_variables] }
   end
 end
