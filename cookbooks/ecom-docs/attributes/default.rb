@@ -1,0 +1,10 @@
+default['apps']['user']                       = 'deploy'
+default['apps']['group']                      = 'deploy'
+default['apps']['location']                   = "/srv/www/ecom-docs"
+default['apps']['db_server']                  = "postgresql"
+default['ecom-docs']['vcs_address']           = "ecom-docs:frankross/ecom-docs.git"
+default['ecom-docs']['vcs_branch']            = "master"
+override['nginx']['user']                     = 'deploy'
+default["apps"]["init_script_name"]           = "puma"
+force_override['nginx']['proxy_send_timeout'] = 600
+force_override['nginx']['proxy_read_timeout'] = 600
