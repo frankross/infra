@@ -1,7 +1,7 @@
 <%@apps.each do |app|%>
   Host <%= app%>
   IdentityFile ~/.ssh/<%=app%>
+  StrictHostKeyChecking no
   User git
   Hostname github.com
 <%end%>
-

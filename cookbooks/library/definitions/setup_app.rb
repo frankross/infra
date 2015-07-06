@@ -80,6 +80,15 @@ define :setup_app do
     group app_group
   end
 
+  s3_package_install "ruby" do
+    source node["ruby"]["s3_location"]
+  end
+
+  execute "install bundler" do
+    command "gem install bundler"
+    not_if "which bundle"
+  end
+
   execute "bundle install" do
     command "PATH=#{node.ruby.bin_location}:$PATH bundle install --path gems"
     user app_user
