@@ -4,7 +4,7 @@ description 'staging environment file'
 override_attributes(
 
   "ecom-platform" => {
-    "cname" =>'frankross.c42.in',
+    "cname" =>'ecom-platform-staging.frankross.in',
     "environment_variables" => {
       :SECRET_KEY_BASE =>'d731f261415e6f13e3e3e5a6726ee163707938f38514331fc2a67eda3800dd428bfe2a0c3b4ed83cf99e7df643e93b450511f81e05556712128ae786559ad',
       :AWS_ACCESS_KEY_ID=>"AKIAJXRZBPR2WQB6A7GA",
@@ -20,7 +20,7 @@ override_attributes(
     }
   },
   "ecom-docs" => {
-    "cname" =>'frankross.c42.in',
+    "cname" =>'ecom-docs-staging.frankross.in',
     "environment_variables" => {
       :SECRET_KEY_BASE =>'aacaea4f251731969a3d4623d36eb9d7bf908683c00479bab517831e6452889a15576a60d3f406b1af6a5016f3290c7a2c9f12adbb1b80817eb8825bbc1d2a23',
     }
@@ -32,7 +32,11 @@ override_attributes(
     :frontend_servers => [
       {
         name: 'ecom-platform',
-        cname:'frankross.c42.in'
+        cname:'ecom-platform-staging.frankross.in'
+      },
+      {
+        name: 'ecom-docs',
+        cname:'ecom-docs-staging.frankross.in'
       }
     ]
   },
