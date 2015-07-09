@@ -44,3 +44,7 @@ end
 execute "download private key" do
   command "su - go -c 'aws s3 cp #{node["ci"]["bucket"]}/deploy_keys/go-ssh  #{node["go"]["home"]}/.ssh/id_rsa;chmod 400  #{node["go"]["home"]}/.ssh/id_rsa'"
 end
+
+execute "set localtime to calcutta" do
+  command "ln -sf /usr/share/zoneinfo/Asia/Calcutta localtime"
+end
