@@ -1,51 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="74">
-  <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="2802dca1-d00f-4bb1-9c00-2b2429860da7" />
-  <%@pipeline_group.each do |pipeline_group|%>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="75">
+  <server artifactsdir="artifacts" siteUrl="http://<%=node.ipaddress%>:8153" commandRepositoryLocation="default" serverId="2802dca1-d00f-4bb1-9c00-2b2429860da7">
+    <security>
+      <passwordFile path="/etc/go/htpasswd" />
+    </security>
+    <mailhost hostname="email-smtp.us-east-1.amazonaws.com" port="465" username="AKIAIKCLZDIJMXK25XOA" encryptedPassword="no+rztgQycFmFpLtXtsml89VjLQ++p4SSFEjbNL8jlSn0bDIwC82sPqTQzOSSmKp" tls="true" from="vipul@codeignition.co" admin="vipul@codeignition.co" />
+  </server>
+<%@pipeline_group.each do |pipeline_group|%>
+  <%pipeline_group["pipelines"].each do |project|%>
+    <% if project["vcs_branch"]=="allbranches" %>
+      <scms>
+        <scm id="5ddc9807-7ab8-4667-83e8-5804291e8aba" name="<%=project["name"]%>">
+          <pluginConfiguration id="github.pr" version="1" />
+          <configuration>
+            <property>
+              <key>url</key>
+              <value><%=project["vcs_root"]%></value>
+            </property>
+          </configuration>
+        </scm>
+      </scms>
+    <%end%>
+  <%end%>
+<%end%>
+<%@pipeline_group.each do |pipeline_group|%>
   <pipelines group="<%=pipeline_group["name"]%>">
     <%pipeline_group["pipelines"].each do |project|%>
-    <pipeline name="<%=project["name"]%>">
-      <materials>
-        <git url="<%=project["vcs_root"]%>" branch="<%=project["vcs_branch"]%>" />
-      </materials>
-      <%project["stages"].each do |project_stage|%>
-      <stage name="<%=project_stage["name"]%>">
-        <jobs>
-        <%project_stage["jobs"].each do |stage_job|%>
-          <job name="<%=stage_job["name"]%>">
-          <% if stage_job["env_variable"] != nil%>
-            <environmentvariables>
-              <%stage_job["env_variable"].each do |env|%>
-              <variable name="<%=env["name"]%>">
-                <value><%=env["value"]%></value>
-              </variable>
-              <%end%>
-            </environmentvariables>
-          <% end %>
-            <tasks>
-              <%stage_job["tasks"].each do |job_tasks|%>
-              <exec command="<%=job_tasks["command"]%>">
-                <%job_tasks["arguments"].split("\n").each do |arg|%>
-                <arg><%=arg%></arg>
+      <% if project["vcs_branch"]=="allbranches" %>
+        <pipeline name="<%=project["name"]%>" template= "<%=project["name"]%>">
+          <materials>
+            <scm ref="5ddc9807-7ab8-4667-83e8-5804291e8aba" />
+          </materials>
+        </pipeline>
+      <%else%>
+        <pipeline name="<%=project["name"]%>">
+          <materials>
+            <git url="<%=project["vcs_root"]%>" branch="<%=project["vcs_branch"]%>" />
+          </materials>
+          <%project["stages"].each do |project_stage|%>
+            <stage name="<%=project_stage["name"]%>">
+              <jobs>
+                <%project_stage["jobs"].each do |stage_job|%>
+                  <job name="<%=stage_job["name"]%>">
+                    <% if stage_job["env_variable"] != nil%>
+                      <environmentvariables>
+                        <%stage_job["env_variable"].each do |env|%>
+                          <variable name="<%=env["name"]%>">
+                            <value><%=env["value"]%></value>
+                          </variable>
+                        <%end%>
+                      </environmentvariables>
+                    <% end %>
+                    <tasks>
+                      <%stage_job["tasks"].each do |job_tasks|%>
+                        <exec command="<%=job_tasks["command"]%>">
+                          <%job_tasks["arguments"].split("\n").each do |arg|%>
+                            <arg><%=arg%></arg>
+                          <%end%>
+                          <% if job_tasks["run_if"]%>
+                            <runif status="<%=job_tasks["run_if"]%>" />
+                          <%end%>
+                        </exec>
+                      <%end%>
+                    </tasks>
+                  </job>
                 <%end%>
-              <% if job_tasks["run_if"]%>
-                <runif status="<%=job_tasks["run_if"]%>" />
-              <%end%>
-              </exec>
-              <%end%>
-            </tasks>
-          </job>
-        <%end%>
-        </jobs>
-      </stage>
+              </jobs>
+            </stage>
+          <%end%>
+        </pipeline>
       <%end%>
-    </pipeline>
     <%end%>
   </pipelines>
+<%end%>
+
+<%@pipeline_group.each do |pipeline_group|%>
+  <%pipeline_group["pipelines"].each do |project|%>
+    <% if project["vcs_branch"]=="allbranches" %>
+      <templates>
+        <pipeline name="<%=project["name"]%>">
+          <%project["stages"].each do |project_stage|%>
+            <stage name="<%=project_stage["name"]%>">
+              <jobs>
+                <%project_stage["jobs"].each do |stage_job|%>
+                  <job name="<%=stage_job["name"]%>">
+                    <% if stage_job["env_variable"] != nil%>
+                      <environmentvariables>
+                        <%stage_job["env_variable"].each do |env|%>
+                          <variable name="<%=env["name"]%>">
+                            <value><%=env["value"]%></value>
+                          </variable>
+                        <%end%>
+                      </environmentvariables>
+                    <% end %>
+                    <tasks>
+                      <%stage_job["tasks"].each do |job_tasks|%>
+                        <exec command="<%=job_tasks["command"]%>">
+                          <%job_tasks["arguments"].split("\n").each do |arg|%>
+                            <arg><%=arg%></arg>
+                          <%end%>
+                          <% if job_tasks["run_if"]%>
+                            <runif status="<%=job_tasks["run_if"]%>" />
+                          <%end%>
+                        </exec>
+                      <%end%>
+                    </tasks>
+                  </job>
+                <%end%>
+              </jobs>
+            </stage>
+          <%end%>
+        </pipeline>
+      </templates>
+    <%end%>
   <%end%>
-  <agents>
-    <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="79ddc648-dddf-47a8-9cb9-a94f8bb92d97" />
-    <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="bca1d94a-de51-423c-8254-50e4945efe4a" />
-  </agents>
-</cruise>
+<%end%>
+    <agents>
+      <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="ce695ea4-08ca-44db-9e3b-b21c8abd15d5" />
+      <agent hostname="ci-server.emami.vpc" ipaddress="<%=node.ipaddress%>" uuid="995519b3-451a-48a5-b835-b87cfeb655f9" />
+    </agents>
+  </cruise>
 

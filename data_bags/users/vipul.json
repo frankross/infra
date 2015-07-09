@@ -2,7 +2,8 @@
   "id"        : "vipul",
   "comment"   : "vipul",
   "home"      : "/home/vipul",
-  "groups"    : ["sysadmin"],
+  "groups"    : ["sysadmin","ci"],
+  "passwd"    : "vipulci123",
   "shell"     : "\/bin\/bash",
   "ssh_keys"  : [
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfBYVYgmuSt+vs34pHEiQyvcWKyPqqEeKNNsf2fuilYo9GQVVTD7UFLvpv4O6Qd15hF5fEyiV0j0YqFdB0DLN+KCLcfelvGQxnz1/paZigh/deCZdfKDZqe8WhxSoUw8zoJgdmqKK8V6U4uad/6l9IYxcXQjph9d8VBl/YqCKrpV06vHqLnGzSYyVwR9edqdXUNwPcCjFTLjaDGWNMaJa7lGQnADKVL8wvt90yhKcLn/p2e5yzcSTXQ3eo7AX5HyMaw1cLJWZxS4dZyEvYggqIucg2cPK5+jleEO291qBEA7D7RXfISG8WmChb9ERi122cpvLdxGUTn2W0ZByiHS49 vipulsharma2190@gmail.com"

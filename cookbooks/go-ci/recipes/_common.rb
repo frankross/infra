@@ -14,7 +14,7 @@ end
 package 'git'
 include_recipe "rbenv"
 include_recipe "rbenv::ruby_build"
-
+include_recipe "go-ci::htpasswd"
 node["ci"]["ruby_version"].each do | ruby|
   rbenv_ruby ruby
 

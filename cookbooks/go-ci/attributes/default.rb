@@ -17,4 +17,7 @@ elsif node.platform_family == "debian"
     {:type => 'host', :db => 'all', :user => 'all', :addr => '::1/128', :method => 'md5'}
   ]
 end
-default["go"]["home"]                           ="/var/go"
+default["go"]["home"]                           = "/var/go"
+override["go"]["version"]                       = "15.1.0-1863"
+override["go"]["passwd"]["file_location"]       = "/etc/go/htpasswd"
+override['java']['jdk_version']                 = '7'

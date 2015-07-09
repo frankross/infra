@@ -22,3 +22,8 @@ _app_servers "#{app}" do
   app_location node.apps.location
   app_service app_service
 end
+
+execute "sync with s3" do
+  cwd "#{app_location}/current"
+  command "su - #{node.apps.user} -c 'aws s3 sync s3://#{node["ecom-docs"]["s3_bucket"]} ./doc/api/v1'"
+end
