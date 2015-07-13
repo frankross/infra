@@ -16,6 +16,11 @@ DEPENDENCIES
     path: cookbooks/nat_server
   proxy
     path: cookbooks/proxy
+  teamcity
+    git: https://github.com/hschaeidt/teamcity-cookbook.git
+    revision: 7e732cb344682c32b077c00e5610df8d10a6ebb8
+  teamcity-ci
+    path: cookbooks/teamcity-ci
   vpn
     path: cookbooks/vpn
 
@@ -30,10 +35,10 @@ GRAPH
   chef-sugar (3.1.1)
   chef_handler (1.1.9)
   dmg (2.2.2)
-  ecom-docs (0.1.1)
+  ecom-docs (0.1.2)
     base (>= 0.0.0)
     library (>= 0.0.0)
-  ecom-platform (0.1.4)
+  ecom-platform (0.1.5)
     base (>= 0.0.0)
     library (>= 0.0.0)
   git (4.2.2)
@@ -46,7 +51,7 @@ GRAPH
     java (>= 1.10.0)
     windows (>= 1.2.6)
     yum (>= 3.0.0)
-  go-ci (0.1.6)
+  go-ci (0.1.7)
     go (>= 0.0.0)
     htpasswd (>= 0.0.0)
     library (>= 0.0.0)
@@ -94,6 +99,13 @@ GRAPH
   runit (1.7.2)
     packagecloud (>= 0.0.0)
   sudo (2.7.1)
+  teamcity (0.2.2)
+    apt (~> 2.0)
+    yum (~> 3.0)
+  teamcity-ci (0.1.0)
+    java (>= 0.0.0)
+    library (>= 0.0.0)
+    teamcity (>= 0.0.0)
   users (1.8.2)
   vpn (0.0.3)
     library (>= 0.0.0)

@@ -1,0 +1,10 @@
+{
+  "id"        : "ciserver",
+  "comment"   : "ciserver",
+  "home"      : "/home/ciserver",
+  "groups"    : ["staging","internal"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZQ8iWt92nQn4sEoe4CwTHKM8oDIeDP8q7aZgwMDv+iWwqM63EbBu6hNqj6Hubkw2p4np9T5tThCifX7FpY/zVw35/eKmLL0xVqiPJNU1LnyLsF6aMtVxG0idkC9JFYvbV+vi1RKs2jfm1f54BmfmatAG/jmmRjYpVY46ohiosSEejJoIOzOtjJVql3WBpmc5aQ06+zb13E9kytDqp/UqGBr0h3M3lpVBvbi/cEaFn5ZECLlMaHrqqSKJNeBPZR2HclwiCsNYN/O5lbhw/NhrRJ3Q/3lvw2mPcne5xcmPj+SbUYs09TIeNrMywmDYpn6KzBj9ZQstT3GEMPuEG79YP teamcity-ssh"
+  ]
+}
