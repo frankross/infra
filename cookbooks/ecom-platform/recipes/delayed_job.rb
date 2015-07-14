@@ -8,8 +8,11 @@ app_user     = node.apps[:user]
 app_group    = node.apps[:group]
 
 include_recipe "ecom-platform::app"
+
+settings = data_bag_item(app, "settings")[node.chef_environment]["environment_variables"]
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
+app_environment_variables.merge! settings
 
 execute "create delayed job bin" do
   command "bundle exec rails generate delayed_job"

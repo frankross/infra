@@ -4,8 +4,10 @@ app_location                     = node.apps.location
 
 _install_awscli
 
+settings = data_bag_item(app, "settings")[node.chef_environment]["environment_variables"]
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
+app_environment_variables.merge! settings
 
 setup_app "#{app}" do
   app_location app_location
