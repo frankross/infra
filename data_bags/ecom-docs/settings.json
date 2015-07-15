@@ -1,8 +1,9 @@
 {
   "id": "settings",
-  "staging" : {
-    "environment_variables": {
-      "SECRET_KEY_BASE" : "aacaea4f251731969a3d4623d36eb9d7bf908683c00479bab517831e6452889a15576a60d3f406b1af6a5016f3290c7a2c9f12adbb1b80817eb8825bbc1d2a23"
-    }
+  "staging": {
+    "encrypted_data": "6Tpx8hZVJPuHMTfqdcTMGI77V1MsaXQAf/UvLKin3MDEtqt1BqTN4cyKdPZh\nJWuhwo6F4QJxNRKnZ1YQ2H6V0A2avT9CmcIZdCxqmI0EmtOb8wRUoKn0PVtF\nGxtFQ04mHgJU2RRjmcORPEAanc9dtVqbMiRBgNkfmbabsdyXs2hMQD8Oj/uy\nYZPDYTHjCW7aG5nnrmb7GgOQVnAvD/ZpQliY3Sox4u4JsGlNf7XLI9F/Ckuu\n6bZUJEAbTZeoI69jFYFN4g4sS3ZOfvewxIxcDQ==\n",
+    "iv": "eSym1XS3gFFwMUPKucSyVQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
   }
 }
