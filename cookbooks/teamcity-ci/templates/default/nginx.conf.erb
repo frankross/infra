@@ -1,11 +1,11 @@
 server {
   listen 80;
-  server_name <%= node.ipaddress%> <%=node["hostname"].emami.vpc%>;
+  server_name <%= node.ipaddress%> <%=node["hostname"]%>.emami.vpc <%=node["teamcity"]["cname"]%>;
 
   location / {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_redirect off;
-    proxy_pass http://<%=node.ipadress %>:8111;
+    proxy_pass http://<%=node.ipaddress %>:8111;
   }
 }

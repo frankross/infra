@@ -57,15 +57,18 @@ begin
 end
 
 directory "/var/lib/nginx" do
-  user app_user
+  user "teamcity"
   group "www-data"
 end
 
 # nginx.conf.erb should be in cookbook which is calling this definition
 template "/etc/nginx/conf.d/teamcity.conf" do
   source "nginx.conf.erb"
-  owner app_user
-  group app_group
+  user "teamcity"
+  group "www-data"
   mode "400"
   notifies :reload, "service[nginx]"
 end
+
+include_recipe "java"
+include_recipe "teamcity-ci::db_server"

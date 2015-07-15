@@ -21,3 +21,4 @@ elsif node.platform_family == "debian"
   ]
 end
 default["teamcity"]["home"]= node["teamcity_server"]["root_dir"]
+default["teamcity"]["cname"] = "teamcity.frankross.in"
