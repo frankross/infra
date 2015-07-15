@@ -8,7 +8,16 @@ define :_configure_postgres_client   do
 
   include_recipe "postgresql::client"
 
-  aws_creds = data_bag_item("databases", app)[node.chef_environment]
+  chef_config_path = Chef::Config['file_cache_path']
+
+  secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
+  execute "download secret key" do
+    command "su - root -c 'aws s3 cp #{node["databag"]["secret_location"]} #{chef_config_path}'"
+    not_if { ::File.exists?("#{chef_config_path}/#{secret_file_name}") }
+  end.run_action(:run)
+
+  secret = `cat #{chef_config_path}/#{secret_file_name}`
+  db_creds = Chef::EncryptedDataBagItem.load("databases",app,secret).to_hash[node.chef_environment]
 
   db_file_location =  "#{app_location}/shared/config/database.yml"
 
@@ -17,14 +26,14 @@ define :_configure_postgres_client   do
     owner node.apps[:user]
     group node.apps[:group]
     mode "400"
-    variables(database: aws_creds["database"],
-              pool: aws_creds["pool"],
-              username: aws_creds["username"],
-              password: aws_creds["password"],
-              host: aws_creds["host"],
-              adapter: aws_creds["adapter"],
-              encoding: aws_creds["encoding"],
-              port: aws_creds["port"]
+    variables(database: db_creds["database"],
+              pool: db_creds["pool"],
+              username: db_creds["username"],
+              password: db_creds["password"],
+              host: db_creds["host"],
+              adapter: db_creds["adapter"],
+              encoding: db_creds["encoding"],
+              port: db_creds["port"]
 
              )
     cookbook 'library'
