@@ -11,8 +11,8 @@ execute "download secret key" do
   not_if { ::File.exists?("#{chef_config_path}/#{secret_file_name}") }
 end.run_action(:run)
 
-secret = `cat #{chef_config_path}/#{secret_file_name}`
-settings = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
+secret                    = File.read "#{chef_config_path}/#{secret_file_name}"
+settings                  = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
 app_environment_variables.merge! settings
