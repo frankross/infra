@@ -4,7 +4,15 @@ app_location                     = node.apps.location
 
 _install_awscli
 
-settings = data_bag_item(app, "settings")[node.chef_environment]["environment_variables"]
+chef_config_path = Chef::Config['file_cache_path']
+secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
+execute "download secret key" do
+  command "su - root -c 'aws s3 cp #{node["databag"]["secret_location"]} #{chef_config_path}'"
+  not_if { ::File.exists?("#{chef_config_path}/#{secret_file_name}") }
+end.run_action(:run)
+
+secret = `cat #{chef_config_path}/#{secret_file_name}`
+settings = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
 app_environment_variables.merge! settings

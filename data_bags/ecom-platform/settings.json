@@ -1,16 +1,9 @@
 {
   "id": "settings",
-  "staging" : {
-    "environment_variables": {
-      "MANDRILLAPP_USERNAME" :"aakash@c42.in",
-      "MANDRILLAPP_PASSWORD" :"yiQe1rK4ZC3ZYgz887oE1g",
-      "ALGOLIA_APPLICATION_ID" :"T63QHGRW33",
-      "ALGOLIA_ADMIN_API_KEY" :"8c5890a0d819b0043c688f23db75b573",
-      "ALGOLIA_SEARCH_API_KEY" :"483dd0e5c6d5165b830187abcad40394",
-      "ALGOLIA_SEARCH_INDEX_SUFFIX" :"staging_1_",
-      "SECRET_KEY_BASE" : "d731f261415e6f13e3e3e5a6726ee163707938f38514331fc2a67eda3800dd428bfe2a0c3b4ed83cf99e7df643e93b450511f81e05556712128ae786559ad",
-      "AWS_ACCESS_KEY_ID" :"AKIAJXRZBPR2WQB6A7GA",
-      "AWS_SECRET_ACCESS_KEY" :"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"
-    }
+  "staging": {
+    "encrypted_data": "3h+uJ90+GMSFuGi7epidsLVw4G3zGV0DztTlzZ7YY3JhX9CQClp8EOdPnIk9\nwY7jtorND7g76UOuo5iICdLhoXCIU+WHNrc/MldQBysA1+dRmMtuk5IhhTHG\nOZKKybzNFEKwqI+twC//bc+yGw9vdJCdX7SbNaE9CB0De7M0d6tCpvVxbvyc\n4rdyiXlb6NY8atFDbrzu4AQzh7fVyaNgTtLptibuRW24042fWmSzq5DEjHAT\n302a47bWqdKghc6cRxXyFyWaNTpWpnQ54lUrXyWqd2lwWYRwgZQy6hosEmDc\nChPmSfhBh9gBw3Ua5EaXfccOIsm2titM5G3nrrCFaLXZcugNHYCZqfCSxgOy\nU+hHVY9IRFJMsBDpMc5bEZuZDGXO5fU+sUf5gT9/fc4OFCdTJ/iSQo+Ur2g1\nP2r01qnq91GV3Hco7W1U/4TGSAiMErI7jjUXUmnCLP65fsJ+pedEhgbMmTnO\nBssFo8yZm0D7zdeKDgqHzntzYFOG6g2a3x7EjZmvQKMtWz9teZX9bspbQUxx\n/2rIrJrg7fTJEPNIiMKA+Vi3bWNGXNe3AToZphTxwPhFpmFt+Ekdh57cHteV\nonCk4DZwmHOQ7s7nJYs0N0p/QuFBb7NutBDoYRqTGiRIx0WuqFnM2O097E9H\nKmPsy2n9wqMB81L7OzGI63PHlYCESQBsokfqPl78AsWfA/41xREmbgb9uIG5\n1AHhKmlO2Nt2Y2Zhlwc1+fH4y7DFKoq20IuReuhkCjOslarkstxekWu8P9sp\nS+YeSm8ZeA==\n",
+    "iv": "7qHtC4xJAsu/gzng40DLPA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
   }
 }

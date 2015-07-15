@@ -6,11 +6,12 @@ _install_awscli
 
 chef_config_path = Chef::Config['file_cache_path']
 
+secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
 execute "download secret key" do
   command "su - root -c 'aws s3 cp #{node["databag"]["secret_location"]} #{chef_config_path}'"
+  not_if { ::File.exists?("#{chef_config_path}/#{secret_file_name}") }
 end.run_action(:run)
 
-secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
 secret = `cat #{chef_config_path}/#{secret_file_name}`
 settings = Chef::EncryptedDataBagItem.load("ecom-docs","settings",secret).to_hash[node.chef_environment]["environment_variables"]
 

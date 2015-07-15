@@ -9,7 +9,17 @@ app_group    = node.apps[:group]
 
 include_recipe "ecom-platform::app"
 
-settings = data_bag_item(app, "settings")[node.chef_environment]["environment_variables"]
+chef_config_path = Chef::Config['file_cache_path']
+
+secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
+
+execute "download secret key" do
+  command "su - root -c 'aws s3 cp #{node["databag"]["secret_location"]} #{chef_config_path}'"
+  not_if { ::File.exists?("#{chef_config_path}/#{secret_file_name}") }
+end.run_action(:run)
+
+secret = `cat #{chef_config_path}/#{secret_file_name}`
+settings = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
 app_environment_variables.merge! settings
@@ -18,6 +28,7 @@ execute "create delayed job bin" do
   command "bundle exec rails generate delayed_job"
   env Hash[app_environment_variables.merge("RAILS_ENV" => "production").map{|key, value| [ key.to_s, value.to_s ]}]
   cwd "#{app_location}/current"
+  not_if { ::File.exists?("#{app_location}/current/bin/delayed_job") }
 end
 
 worker_counts = {'default' => 1, 'slow' => 1, 'image' => 1}
@@ -41,4 +52,5 @@ end
 service "dj" do
   supports status: true, start: true, stop: true, restart: true
   action :enable
+  subscribes :restart, "service[puma]", :delayed
 end
