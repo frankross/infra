@@ -43,7 +43,16 @@ define :setup_app do
     action :install
   end.run_action(:install)
 
-  latest_sha   = `su - #{app_user} -c "git ls-remote #{node[app]['vcs_address']} --heads #{node[app]['vcs_branch']}" | awk '{print $1}'`.split("\n")[0]
+  temp_dir = Chef::Config['file_cache_path']
+
+  bash "downloading build_versions.yml" do
+    user 'root'
+    cwd temp_dir
+    code "aws s3 cp #{node["s3_bucket"]}/sha_number.yml ./"
+    action :nothing
+  end.run_action(:run)
+
+  latest_sha   = YAML.load(File.read "#{temp_dir}/sha_number.yml")[node.chef_environment][app]
   current_sha  = File.open("#{app_location}/current/.git/refs/heads/deploy", "r").read.delete!("\n") if Dir.exists?("#{app_location}/current")
 
   git "#{app_location}/releases/#{latest_sha}" do
