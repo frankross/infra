@@ -46,9 +46,7 @@ define :setup_app do
   temp_dir = Chef::Config['file_cache_path']
 
   bash "downloading build_versions.yml" do
-    user 'root'
-    cwd temp_dir
-    code "aws s3 cp #{node["s3_bucket"]}/sha_number.yml ./"
+    code "su - root -c 'aws s3 cp #{node["s3_bucket"]}/sha_number.yml #{temp_dir}/'"
     action :nothing
   end.run_action(:run)
 
