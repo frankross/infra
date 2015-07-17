@@ -2,27 +2,15 @@
 # Cookbook Name:: delayed_job
 # Recipe:: default
 #
-app          = "ecom-platform"
-app_location = node.apps.location
-app_user     = node.apps[:user]
-app_group    = node.apps[:group]
+app                                  = "ecom-platform"
+app_location                         = node.apps.location
+app_user                             = node.apps[:user]
+app_group                            = node.apps[:group]
+node.set["apps"]["init_script_name"] = "dj"
+include_recipe "ecom-platform::_common"
 
-include_recipe "ecom-platform::app"
-
-chef_config_path = Chef::Config['file_cache_path']
-
-secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
-
-execute "download secret key" do
-  command "su - root -c 'aws s3 cp #{node["databag"]["secret_location"]} #{chef_config_path}'"
-  not_if { ::File.exists?("#{chef_config_path}/#{secret_file_name}") }
-end.run_action(:run)
-
-secret                    = File.read "#{chef_config_path}/#{secret_file_name}"
-settings                  = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
-app_environment_variables.merge! settings
 
 execute "create delayed job bin" do
   command "bundle exec rails generate delayed_job"
