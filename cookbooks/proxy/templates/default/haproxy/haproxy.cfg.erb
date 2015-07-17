@@ -36,6 +36,15 @@ stats auth <%= @stats_user %>:<%= @stats_password %>
     <%= "use_backend #{server[:name]} if #{server[:name]}"%>
   <% end %>
 
+  frontend incoming-https
+  option httplog
+  bind *:443 ssl crt /etc/haproxy/certs/<%=@key%>.pem no-sslv3
+  reqadd X-Forwarded-Proto:\ https
+  <% @frontend_servers.each do |server|%>
+    <%= "acl #{server[:name]} hdr_dom(host) -i #{server[:cname]}"%>
+    <%= "use_backend #{server[:name]} if #{server[:name]}"%>
+  <% end %>
+
   <% @frontend_servers.each_with_index do |server,frontend_index|%>
     backend <%= server[:name]%> :80
     option httpchk GET / HTTP/1.1\r\nHost:\ <%= server[:cname] %>
