@@ -32,7 +32,7 @@ password =  haproxy_creds['password']
 
 frontend_servers = node.proxy.frontend_servers.dup
 frontend_servers.each do |server|
-  servers =  search(:node,"run_list:recipe\\[#{server[:name]}\\:\\:*\\] AND chef_environment:#{node.chef_environment}")
+  servers =  search(:node,"run_list:recipe\\[#{server[:name]}\\:\\:app\\] AND chef_environment:#{node.chef_environment}")
   server.merge!(backend_servers:  servers)
 end
 

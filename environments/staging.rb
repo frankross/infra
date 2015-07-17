@@ -6,13 +6,13 @@ cookbook_versions ({
   'ecom-platform'       => '= 0.1.10',
   'ecom-docs'           => '= 0.1.5',
   'library'             => '= 0.0.11',
-  'proxy'               => '= 0.1.0'
+  'proxy'               => '= 0.1.1'
 })
 
 override_attributes(
 
   "ecom-platform" => {
-    "cname" =>'ecom-platform-staging.frankross.in',
+    "cname" =>'staging.frankross.in',
     "environment_variables" => {
       :AWS_S3_BUCKET_NAME=>"ecom-platform-assets",
       :CIRCLE_ARTIFACTS=>true,
@@ -31,7 +31,7 @@ override_attributes(
     :frontend_servers => [
       {
         name: 'ecom-platform',
-        cname:'ecom-platform-staging.frankross.in'
+        cname:'staging.frankross.in'
       },
       {
         name: 'ecom-docs',
