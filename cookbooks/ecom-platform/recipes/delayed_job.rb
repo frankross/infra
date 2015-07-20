@@ -35,10 +35,10 @@ template "/etc/init.d/dj" do
   mode "775"
   owner app_user
   group app_group
+  notifies:restart, "service[dj]", :delayed
 end
 
 service "dj" do
   supports status: true, start: true, stop: true, restart: true
   action :enable
-  subscribes :restart, "service[puma]", :delayed
 end

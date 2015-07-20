@@ -1,68 +1,45 @@
-ecom_platform Cookbook
-======================
-TODO: Enter the cookbook description here.
+This recipe install and sets up ecom-platform application.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Explanation of recipes
+1)_common.rb
 
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+This recipe prefix is _ because this recipe wont be used independently
+and only will be included in other recipes.
+This recipe sets up a basic source code with database.yml which will be used both by app and delayed jobs.
 
-e.g.
-#### packages
-- `toaster` - ecom_platform needs toaster to brown your bagel.
+i)_install_awscli
+This is a definition in library cookbook which install and configure
+awscli with creds.
+For more information check library cookbook readme
 
-Attributes
-----------
-TODO: List your cookbook attributes here.
+ii)setup_app
+This is a definition in library cookbook which is used to clone code
+from github, run bundle install and installs ruby on instance
 
-e.g.
-#### ecom_platform::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['ecom_platform']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+iii)_configure_postgres_client 
+This run asset precompile on the instances
 
-Usage
------
-#### ecom_platform::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `ecom_platform` in your node's `run_list`:
+2)app.rb
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[ecom_platform]"
-  ]
-}
-```
+This recipe include _common.rb
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+i)_asset_precompile 
+This run asset precompile on the instances
 
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+ii)_app_servers
+This is used to set up 
 
-License and Authors
--------------------
-Authors: TODO: List authors
+i)Puma and configuration
+ii)Install nginx and configuration
+
+3) delayed_jobs
+
+This recipe include _common.rb
+Then it sets up delayed jobs , creates an init.d script and runs
+delayed jobs
+
+
+4) cron_jobs
+This is to create cron tabs for sync delivery slots and sync
+distribution center
