@@ -27,7 +27,7 @@ define :setup_app do
     package pkg
   end
 
-  ["releases","shared/gems", "/shared/config","/shared/pids","/shared/sockets"].each do |dir|
+  ["releases","shared/gems", "/shared/config","/shared/pids","/shared/sockets","/shared/tmp"].each do |dir|
     directory "#{app_location}/#{dir}" do
       recursive true
       owner app_user
@@ -77,6 +77,12 @@ define :setup_app do
 
   link "#{app_location}/current/gems" do
     to "#{app_location}/shared/gems"
+    user app_user
+    group app_group
+  end
+
+  link "#{app_location}/current/tmp" do
+    to "#{app_location}/shared/tmp"
     user app_user
     group app_group
   end

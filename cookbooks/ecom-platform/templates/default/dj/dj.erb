@@ -35,8 +35,8 @@ stop() {
       if [ $(ps aux |grep 'delayed' | grep -v grep | wc -l) -eq 0 ];then
           echo "Application $APP is already stopped ";
       else
-         echo "Stopping $APP process"
-         su - $APP_USER -c "cd $APP_PATH;source /etc/default/<%=@app%>.conf;RAILS_ENV=production bundle exec bin/delayed_job stop"
+          echo "Stopping $APP process"
+          ps aux | grep delayed | grep -v grep | awk '{print $2}' | xargs kill -9
       fi
 }
 
