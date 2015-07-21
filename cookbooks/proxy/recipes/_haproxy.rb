@@ -104,3 +104,6 @@ iptables_rule 'https' do
   action :enable
 end
 
+process_check "haproxy" do
+  process node["monitoring"]["processes"]
+end
