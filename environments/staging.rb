@@ -3,10 +3,10 @@ description 'staging environment file'
 
 cookbook_versions ({
   'base'                => '= 0.0.4',
-  'ecom-platform'       => '= 0.1.12',
+  'ecom-platform'       => '= 0.1.13',
   'ecom-docs'           => '= 0.1.5',
   'library'             => '= 0.0.14',
-  'proxy'               => '= 0.1.3'
+  'proxy'               => '= 0.1.4'
 })
 
 override_attributes(

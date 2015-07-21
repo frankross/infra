@@ -44,6 +44,8 @@ service "dj" do
   action :enable
 end
 
+node.override["datadog"]["tags"].push("delayed_job")
+
 process_check "ecom-platform" do
   process node["monitoring"]["processes"]
 end
