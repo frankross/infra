@@ -7,3 +7,4 @@ default["chef_server"]["url"]                 = "https://chef-server.emami.vpc/o
 default["ruby"]["s3_location"]                = "s3://emami-ci-packages/ruby/ruby-2.2.2-2_amd64.deb"
 default["databag"]["secret_location"]         = "s3://emami-ci-packages/deploy_keys/databag_secret"
 default["s3_bucket"]                          = "s3://emami-ci-packages"
+default["vpc"]["cidr"]                        = "10.60.0.0/24"

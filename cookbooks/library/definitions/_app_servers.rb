@@ -29,7 +29,8 @@ define :_app_servers do
   template "/etc/nginx/conf.d/#{app}.conf" do
     source "app_servers/nginx.conf.erb"
     variables(app_name: app,
-              cname: node[app]["cname"])
+              cname: node[app]["cname"],
+              vpc_cidr: node["vpc"]["cidr"])
     owner app_user
     group app_group
     mode "400"
