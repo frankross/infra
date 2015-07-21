@@ -19,6 +19,12 @@ define :_app_servers do
    group "www-data"
   end
 
+  node.default['datadog']['nginx']['instances']=[{:nginx_status_url => "http://#{node['ipaddress']}/nginx_status/",
+                                                  :tags => ["#{node['ipaddress']}"]
+  }]
+  node.override["datadog"]["tags"].push("nginx")
+  include_recipe "datadog::nginx"
+
   # nginx.conf.erb should be in cookbook which is calling this definition
   template "/etc/nginx/conf.d/#{app}.conf" do
     source "app_servers/nginx.conf.erb"
@@ -30,6 +36,8 @@ define :_app_servers do
     cookbook "library"
     notifies :reload, "service[nginx]"
   end
+
+  node.override["datadog"]["tags"].push("puma")
 
   template "#{app_location}/shared/config/puma.rb" do
     source "app_servers/puma.rb.erb"

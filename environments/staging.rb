@@ -2,10 +2,10 @@ name 'staging'
 description 'staging environment file'
 
 cookbook_versions ({
-  'base'                => '= 0.0.2',
+  'base'                => '= 0.0.4',
   'ecom-platform'       => '= 0.1.11',
   'ecom-docs'           => '= 0.1.5',
-  'library'             => '= 0.0.12',
+  'library'             => '= 0.0.13',
   'proxy'               => '= 0.1.2'
 })
 
