@@ -22,3 +22,5 @@ elsif node.platform_family == "debian"
 end
 default["teamcity"]["home"]= node["teamcity_server"]["root_dir"]
 default["teamcity"]["cname"] = "teamcity.frankross.in"
+default["monitoring"]["processes"]=[{name: 'teamcity-server', search_string: ['teamcity-server']},
+                                    {name: 'teamcity-agent', search_string: ['teamcity-agent']}]
