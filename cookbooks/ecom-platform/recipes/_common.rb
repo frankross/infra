@@ -26,4 +26,5 @@ end
 _configure_postgres_client app do
   app_location app_location
   app_service app_service
+  environment_variables app_environment_variables
 end

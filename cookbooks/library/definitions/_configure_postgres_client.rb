@@ -1,10 +1,11 @@
 define :_configure_postgres_client   do
 
-  app           = params[:name]
-  app_user      = node.apps[:user]
-  app_group     = node.apps[:group]
-  app_location  = params[:app_location]
-  app_service   = params[:app_service]
+  app                   = params[:name]
+  app_user              = node.apps[:user]
+  app_group             = node.apps[:group]
+  app_location          = params[:app_location]
+  app_service           = params[:app_service]
+  environment_variables = params[:environment_variables]
 
   include_recipe "postgresql::client"
 
@@ -45,5 +46,15 @@ define :_configure_postgres_client   do
     to "#{app_location}/shared/config/database.yml"
     user app_user
     group app_group
+  end
+
+  env = Hash[environment_variables.merge("RAILS_ENV" => "production").map{|key, value| [ key.to_s, value.to_s ]}]
+
+  execute "db_migrate_#{params[:app_name]}" do
+    cwd "#{app_location}/current"
+    command "PATH=#{node.ruby.bin_location}:$PATH bundle exec rake db:migrate"
+    environment "RAILS_ENV" => "production"
+    user app_user
+    environment env
   end
 end
