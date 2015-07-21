@@ -1,0 +1,9 @@
+init_config:
+
+instances:
+  <% @process_checks.each do |pc| %>
+ - name: <%= pc['name'] %>
+   search_string: <%= pc['search_string'] %>
+   ignore_denied_access: True
+   exact_match: False
+  <% end %>
