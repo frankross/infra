@@ -8,6 +8,7 @@ app_user                             = node.apps[:user]
 app_group                            = node.apps[:group]
 node.set["apps"]["init_script_name"] = "dj"
 include_recipe "ecom-platform::_common"
+node.default["monitoring"]["processes"]  = [{name: 'delayed_job', search_string: ['delayed_job']}]
 
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
@@ -41,4 +42,8 @@ end
 service "dj" do
   supports status: true, start: true, stop: true, restart: true
   action :enable
+end
+
+process_check "ecom-platform" do
+  process node["monitoring"]["processes"]
 end
