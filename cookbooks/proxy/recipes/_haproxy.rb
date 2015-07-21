@@ -73,6 +73,18 @@ template "/etc/haproxy/haproxy.cfg" do
   notifies :restart, "service[haproxy]", :delayed
 end
 
+template '/etc/dd-agent/conf.d/haproxy.yaml' do
+  source 'datadog/haproxy.yaml.erb'
+  owner 'dd-agent'
+  group 'root'
+  variables(
+    :eip=> node.proxy.aws.eip,
+    :username => user,
+    :password => password
+  )
+end
+node.override["datadog"]["tags"].push("haproxy")
+
 directory "/etc/haproxy/errors" do
   action :create
 end
@@ -91,3 +103,4 @@ end
 iptables_rule 'https' do
   action :enable
 end
+
