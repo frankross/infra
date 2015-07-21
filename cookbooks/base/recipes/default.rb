@@ -8,3 +8,4 @@
 #
 include_recipe "base::_hostname"
 include_recipe "base::users_manage"
+include_recipe "base::dd_monitored"
