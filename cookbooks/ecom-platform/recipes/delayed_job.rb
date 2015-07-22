@@ -49,3 +49,7 @@ node.override["datadog"]["tags"].push("delayed_job")
 process_check "ecom-platform" do
   process node["monitoring"]["processes"]
 end
+
+papertrail "app" do
+  log_file ["#{app_location}/shared/log/*.log","/var/log/syslog"]
+end
