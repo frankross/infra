@@ -1,0 +1,7 @@
+files:
+  <%@log_file.each do |file|%>
+     - <%=file%>
+   <%end%>
+destination:
+  host: logs3.papertrailapp.com:
+  port: 54250
