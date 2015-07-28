@@ -101,7 +101,6 @@ define :setup_app do
 
   execute "install bundler" do
     command "gem install bundler"
-    not_if "which bundle"
   end
 
   execute "bundle install" do
