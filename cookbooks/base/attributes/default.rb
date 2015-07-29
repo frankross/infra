@@ -7,3 +7,6 @@ when "rhel"
 when "debian"
     override['datadog']['agent_version'] = "1:5.3.0-1"
 end
+override["ntp"]["servers"]=["server 3.in.pool.ntp.org",
+                      	   "server 0.asia.pool.ntp.org",
+                      	   "server 2.asia.pool.ntp.org"]
