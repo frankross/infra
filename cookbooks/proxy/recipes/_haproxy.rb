@@ -103,3 +103,7 @@ end
 iptables_rule 'https' do
   action :enable
 end
+
+_logrotate "haproxy" do
+  path "/var/log/haproxy/*"
+end
