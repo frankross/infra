@@ -49,12 +49,14 @@ define :_configure_postgres_client   do
   end
 
   env = Hash[environment_variables.merge("RAILS_ENV" => "production").map{|key, value| [ key.to_s, value.to_s ]}]
-
+  temp_dir = Chef::Config['file_cache_path']
+  dbmigrate   = YAML.load(File.read "#{temp_dir}/sha_number.yml")[node.chef_environment][app]["dbmigrate"]
   execute "db_migrate_#{params[:app_name]}" do
     cwd "#{app_location}/current"
     command "PATH=#{node.ruby.bin_location}:$PATH bundle exec rake db:migrate"
     environment "RAILS_ENV" => "production"
     user app_user
     environment env
+    only_if {dbmigrate == true}
   end
 end

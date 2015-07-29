@@ -50,7 +50,7 @@ define :setup_app do
     action :nothing
   end.run_action(:run)
 
-  latest_sha   = YAML.load(File.read "#{temp_dir}/sha_number.yml")[node.chef_environment][app]
+  latest_sha   = YAML.load(File.read "#{temp_dir}/sha_number.yml")[node.chef_environment][app]["sha"]
   current_sha  = File.open("#{app_location}/current/.git/refs/heads/deploy", "r").read.delete!("\n") if Dir.exists?("#{app_location}/current")
 
   git "#{app_location}/releases/#{latest_sha}" do
