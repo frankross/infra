@@ -1,0 +1,31 @@
+#!/bin/bash
+INSTANCEID=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
+IPADDRESS=`aws ec2 describe-instances --instance-ids $INSTANCEID | jq ".Reservations"[0]".Instances"[0]".NetworkInterfaces"[0]".PrivateIpAddresses"[1]".PrivateIpAddress" |sed 's/"//g'`
+case "$1" in
+  MASTER)
+    logger triggering notify master event
+    ADDRESS=`aws ec2 describe-addresses --public-ips <%= @eip%>`
+    ASSOCIATED_INSTANCEID=`echo $ADDRESS| jq ".Addresses"[0]".InstanceId"| sed 's/"//g'`
+    ASSOCIATION_ID=`echo $ADDRESS | jq ".Addresses"[0]".AssociationId" | sed 's/"//g'`
+    ALLOCATION_ID=`echo $ADDRESS | jq ".Addresses"[0]".AllocationId" | sed 's/"//g'`
+    logger  -p local0.warn -t AWSOP current status ASOCIATED_INSTANCEID  $ASOCIATED_INSTANCEID , ASSOCIATION_ID $ASSOCIATION_ID , ALLOCATION_ID $ALLOCATION_ID
+
+    case "$ASSOCIATED_INSTANCEID" in
+      $INSTANCEID)
+        logger  -p local0.warn -t host already master
+        ;;
+      *)
+        aws ec2 disassociate-address --association-id $ASSOCIATION_ID  | logger  -p local0.emerg -t AWSOP
+        logger  -p local0.warn -t AWSOP associating EIP to instance: $INSTANCEID
+        aws ec2 associate-address --instance-id $INSTANCEID --allocation-id $ALLOCATION_ID --private-ip-address $IPADDRESS| logger  -p local0.emerg -t AWSOP
+        ;;
+    esac
+    ;;
+  FAULT)
+    logger restarting keepalived
+    service keepalived restart
+    ;;
+  *)
+    echo $"Usage: $0 {MASTER|FAULT}"
+    exit 2
+esac

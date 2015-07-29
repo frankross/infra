@@ -1,6 +1,6 @@
 include_recipe "proxy::_common"
 
-peers =  search(:node,"run_list:recipe\\[proxy\\:\\:slave\\] AND chef_environment:#{node.chef_environment}").map{|m| m.ipaddress}
+peers =  search(:node,"run_list:recipe\\[proxy\\:\\:master\\] AND chef_environment:#{node.chef_environment}").map{|m| m.ipaddress}
 
 template '/etc/keepalived/keepalived.conf' do
   source 'keepalived.conf.erb'

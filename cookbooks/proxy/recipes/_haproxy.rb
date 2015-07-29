@@ -50,7 +50,7 @@ execute "download secret key" do
 end.run_action(:run)
 
 secret = File.read "#{chef_config_path}/#{secret_file_name}"
-key    = Chef::EncryptedDataBagItem.load("haproxy","keys",secret).to_hash[node.chef_environment]["key"]
+key    = Chef::EncryptedDataBagItem.load("haproxy","keys",secret).to_hash["key"]
 
 file "/etc/haproxy/certs/frankross.pem" do
   content key
@@ -102,8 +102,4 @@ end
 
 iptables_rule 'https' do
   action :enable
-end
-
-process_check "haproxy" do
-  process node["monitoring"]["processes"]
 end
