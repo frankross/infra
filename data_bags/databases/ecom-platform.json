@@ -1,8 +1,14 @@
 {
   "id": "ecom-platform",
   "staging": {
-    "encrypted_data": "By7rGZPXr6l34XLajXukuoGlAqW33XqkzxZph8xJxTPwxX+UhkDWkDba8CeI\nOZbObuaE/ZrsKvS18OJJzWYmd6GYTwgnslmPMVOLXdkZ1BRjjf2vJmpNgeDa\nEoBgr5TKMRwKMCMzfC1sKFWsOQ1yIVMVRpUFc2PwNs6DRMv7T6FY9orIEWtP\ncjFMKJnHO+blWsPhniF1dx8BMEpWzI4pepp0n6K2CvsRNNV+MRVwRQWY3C8J\n4+vGLyGdVewqtlq7acBqSBhmRrDqgOL2lWwsUrkMXTyHAt1DxheiwiLN8sIH\nWgqm56ym0a8iZJsD9UAsuDch8cJ7HE4kawJT7tooDP0c3lpnFtmB3ODJVgLB\nv1t1MM3ox4/24vocI45884GC\n",
-    "iv": "ou+1UCI2e/Zq/3pNWJFXcQ==\n",
+    "encrypted_data": "tZikge8VOSECbWyvdshfdGxS+gomMZLzVe6ndGu336VgM7qZAqhBEERlASnT\nv0O5lRArbdHca7VHmE0U+B3730UlR2DBEZw8CkqvBqOwe8tqqBR1NDKL3gjJ\nbb7EdekRZ7tBN5rQv+8CvVaV6vEBtbJVTO7k4GQDzeYU1bkCBk4tmKUW1ki7\n9b+VEP8ntoaxrNsqBruPnlkMYv4KEXR8v5dnHJLMgVVPeo//+Ijs8bnGZxQR\ngrEot2O9x9fDBU2Ms6RqtMzPEXaVDB89NX/kc64W8b1gD9BOO7rTmjRV62El\n6fU4Dm8BpwwZeMUHKRbaQrLCqiIjQjPn8GGp34lVWVG86OeApgAEDOqpwIXC\nnV52OpeVYquaIOy/fH1aWrjJ\n",
+    "iv": "qUIwpaRCyptAEnoq4gCEeA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "production": {
+    "encrypted_data": "4FLYM+rIEUDEdTUJ7BfrAvd5lBlWCGzcriqfAEl90/I2/QZzE6mEG2lXvve6\nGWYGOTluHYavuCNy++gJ3BevL+jTpsNwigNWDoMb3SQKuSH1MXJR0v0KKIe+\nxUolXYtWOz+ApK4WoqsdWnyBzjygYHgaiQPsCx2mwefzRlBIKJSegEveDqHb\nc57CRCQVVL/qzmg9FgNHd1FD+fcAq0jcZS9P3S9aBEYr0QnGM5IAAKhWSFU5\nXzxbcygIjx9I+bwHAgBzZHytfvKEHXE28s+AcJ+WB9v0VzK3UUxOrIIeqfkI\ny3Jd0cLasqFQ1Yd6mu6PBpo3thh0L3K65Tr9K94jIp++Jj2z5aeb3lgZYkFw\nzd4TsauOOpjJUn25yi1wAAk1L7AG1RcQZGNZb1M2Ymy+pA==\n",
+    "iv": "KMe72CGdRnYXIb7+LCL6qQ==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   }
