@@ -3,7 +3,6 @@ app_service                      = node["apps"]["init_script_name"]
 app_location                     = node.apps.location
 
 node.default["monitoring"]["processes"]  = [{name: 'puma', search_string: ['puma']},{name: 'nginx', search_string: ['nginx']}]
-_install_awscli
 
 include_recipe "ecom-platform::_common"
 

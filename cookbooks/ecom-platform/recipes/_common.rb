@@ -2,6 +2,8 @@ app                              = "ecom-platform"
 app_service                      = node["apps"]["init_script_name"]
 app_location                     = node.apps.location
 
+_install_awscli
+
 chef_config_path = Chef::Config['file_cache_path']
 secret_file_name =  node["databag"]["secret_location"].split("/")[-1]
 execute "download secret key" do
