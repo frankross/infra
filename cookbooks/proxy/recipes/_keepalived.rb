@@ -10,6 +10,7 @@
   package pkg
 end
 
+package "libssl-dev"
 
 temp_dir = Chef::Config['file_cache_path']
 
