@@ -1,0 +1,10 @@
+{
+  "id"        : "aninda",
+  "comment"   : "aninda",
+  "home"      : "/home/aninda",
+  "groups"    : ["internal","staging"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHtYJLHrR89k5gKHwpIVt7Da8FDoKG2njk1MX9oYxpkQqdo+j5MF0tRviOT1AXoTdywmrbazg8nzX1N8cQBQxS9zayTA6LILG3WasaAOsXyzevwC3c81Mo1LiuT1xmGPCcwOHaV+YEqvasPoZmZJJfbG0klutXkSYeDCK1vjxZGs62dsJT0A4RsVF+qqM25zTlONZK9jQm/D/2zvsq4JeHqUY7ArsZKiQunqSXGqYQWwdwCvfYHJXihMpm45WlOeJwGBQlecJG6pRxby6AQf/2xFrdeJAps1GdQMYcUPj0u4uFHjAuOiALgII7163kuolHoIV2IdA7SijOkAfozWQn spacefugitive@gmail.com"
+  ]
+}
