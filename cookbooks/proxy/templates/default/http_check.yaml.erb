@@ -1,0 +1,16 @@
+init_config:
+
+instances:
+<% @instances.each do |i| -%>
+    -   name:  <%= i['name'] %>
+        url:  <%= i['url'] %>
+        timeout: <%= i['timeout'] || 1 %>
+        threshold: <%= i['threshold'] || 3 %>
+        window: <%= i['window'] || 5 %>
+        collect_response_time: true
+        notify:
+          - @slack-infra
+      <% i['notify_members'].each do |member| -%>
+          - <%= member %>
+      <% end -%>
+<% end -%>
