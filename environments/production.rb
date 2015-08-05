@@ -16,6 +16,7 @@ override_attributes(
     "environment_variables" => {
       :AWS_S3_BUCKET_NAME=>"ecom-platform-assets",
       :CIRCLE_ARTIFACTS=>true,
+      :NEW_RELIC_AGENT_ENABLED => true
     }
   },
   "ecom-docs" => {
