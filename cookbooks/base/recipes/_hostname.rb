@@ -13,7 +13,7 @@ elsif node['platform_family']=="debian"
 end
 
 execute "networking restart" do
-  command "/etc/init.d/network restart; hostname #{node.name}.emami.vpc"
+  command "/etc/init.d/networking restart; hostname #{node.name}.emami.vpc"
   not_if "hostname -f | grep #{node.name}.emami.vpc"
 end
 
