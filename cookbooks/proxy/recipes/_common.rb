@@ -2,8 +2,6 @@
 # Cookbook Name:: proxy
 # Recipe:: _common
 #
-# Copyright (C) 2013 Grasshopper LLC
-#
 # All rights reserved - Do Not Redistribute
 #
 

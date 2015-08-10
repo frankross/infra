@@ -1,9 +1,6 @@
 #
 # Cookbook Name:: proxy
 # Recipe:: _haproxy
-#
-# Copyright (C) 2013 Grasshopper LLC
-#
 # All rights reserved - Do Not Redistribute
 #
 

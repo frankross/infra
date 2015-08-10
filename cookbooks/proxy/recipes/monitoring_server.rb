@@ -1,9 +1,6 @@
 #
 # Cookbook Name:: infra_essentials
 # Recipe:: monitoring_server
-#
-# Copyright (C) 2013 Grasshopper LLC
-# 
 # All rights reserved - Do Not Redistribute
 
 include_recipe "datadog::dd-agent"
