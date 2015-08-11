@@ -59,7 +59,6 @@ define :setup_app do
     action :checkout
     user app_user
     group app_group
-    notifies :restart, "service[#{app_service}]", :delayed
     not_if { latest_sha == current_sha}
   end
 
@@ -73,6 +72,7 @@ define :setup_app do
     user app_user
     group app_group
     not_if { latest_sha == current_sha}
+    notifies :restart, "service[#{app_service}]", :delayed
   end
 
   link "#{app_location}/current/gems" do
