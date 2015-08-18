@@ -11,6 +11,11 @@ node.default["monitoring"]["processes"]  = [{name: 'delayed_job', search_string:
 
 include_recipe "ecom-platform::_common"
 
+
+['libxslt1.1','libxslt1-dev','libpcre3-dev',"imagemagick","libmagickwand-dev","build-essential"].each do |pkg|
+  package pkg
+end
+
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
 
