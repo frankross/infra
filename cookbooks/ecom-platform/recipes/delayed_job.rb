@@ -11,11 +11,6 @@ node.default["monitoring"]["processes"]  = [{name: 'delayed_job', search_string:
 
 include_recipe "ecom-platform::_common"
 
-
-['libxslt1.1','libxslt1-dev','libpcre3-dev',"imagemagick","libmagickwand-dev","build-essential"].each do |pkg|
-  package pkg
-end
-
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
 
@@ -48,6 +43,14 @@ end
 service "dj" do
   supports status: true, start: true, stop: true, restart: true
   action :enable
+end
+
+['libxslt1.1','libxslt1-dev','libpcre3-dev',"imagemagick","libmagickwand-dev","build-essential"].each do |pkg|
+  log 'message' do
+    message "Installing package #{pkg}"
+    level :debug
+  end
+  package pkg
 end
 
 node.override["datadog"]["tags"].push("delayed_job")
