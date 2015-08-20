@@ -141,4 +141,25 @@ knife data bag show ecom-platform settings -F json
 and push to github otherwise your changes will be removed.
 
 
+###How do I start reading about cookbooks
+We have a cookbook called library cookbook which has definitions in it.
+We use these common defitions to setup app server.
+You will find different definition which has different purposes.They take
+attributes and variables as inputs and then do things acordindly.
+You can start with ecom-docs app , see what resources(defnitions) is
+being used there and then subsequently read readme for library cookbook
+where the detailed description for that definition is given.
+Then you can start reading the ecom-platform cookbook.
 
+###How do i read a specific cookbook with parameters
+A cookbook has 
+1)attributes
+2)recipes
+3)files
+4)templates
+5)metadata.rb
+When you start reading a cookbook it will contain attributes , templates
+and resource from other cookbooks.The files are in directories with same
+name in a specific cookbook.
+
+Please read DeploymentReadme.md next

@@ -69,3 +69,5 @@ servers =  search(:node,"run_list:recipe\\[#{server[:name]}\\:\\:app\\] AND chef
 5) Keepalived is used to monitor haproxy on master and slave to switch
 elastic ip if master crashes
 
+
+Please readme ecom-docs readme or ecom-platform readme next
