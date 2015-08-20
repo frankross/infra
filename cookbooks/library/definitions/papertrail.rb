@@ -29,18 +29,6 @@ define :papertrail do
     notifies :restart,"service[remote_syslog]", :delayed 
   end
 
-  package "monit"
+  monit "remote_syslog"
 
-
-  cookbook_file "/etc/monit/conf.d/remote_syslog" do
-    source "monit/remote_syslog"
-    mode "644"
-    cookbook 'library'
-    notifies :restart,"service[monit]", :delayed
-  end
-
-  service "monit" do
-    action :enable
-    supports :status => true, :start => true, :stop => true, :restart => true
-  end
 end

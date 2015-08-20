@@ -1,0 +1,4 @@
+check process puma
+        matching "puma"
+        start program = "/etc/init.d/puma start"
+        stop program = "/etc/init.d/puma stop"

@@ -1,0 +1,4 @@
+check process dj
+        matching "delayed_job"
+        start program = "/etc/init.d/dj start"
+        stop program = "/etc/init.d/dj stop"

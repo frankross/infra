@@ -22,3 +22,5 @@ end
 process_check "ecom-platform" do
   process node["monitoring"]["processes"]
 end
+
+monit "puma"

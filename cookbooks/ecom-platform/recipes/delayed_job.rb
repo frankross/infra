@@ -62,3 +62,5 @@ end
 papertrail "app" do
   log_file ["#{app_location}/shared/log/*.log","/var/log/syslog"]
 end
+
+monit "dj"
