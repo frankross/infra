@@ -2,3 +2,4 @@ check process dj
         matching "delayed_job"
         start program = "/etc/init.d/dj start"
         stop program = "/etc/init.d/dj stop"
+        if 5 restarts with 5 cycles then timeout

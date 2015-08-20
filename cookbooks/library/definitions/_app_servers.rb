@@ -83,4 +83,7 @@ define :_app_servers do
   _logrotate "app_logs" do
     path "#{app_location}/shared/log/*.log"
   end
+
+  monit "puma"
+  monit "nginx"
 end
