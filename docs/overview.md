@@ -96,14 +96,6 @@ Chef Structure
 knife bootstrap <node-ip> -x ubuntu --node-name <node-name> -E <node-env> -i <node-key> --sudo
 ** start adding new cook books
 
-### How do you control params, environment variables?
-* The environment variables for apps
-1) Not encrypted  <--- ./environments/* folder
-2) Encrypted      <--- ./data_bags/<app>/* folder
-
-* db creds are in <--- ./data_bags/databases/* folder
-
-
 ### How do I run chef-client on app servers ?
 * To run chef-client on servers 2 steps can be followed
 * Run using knife
@@ -120,6 +112,14 @@ knife bootstrap <node-ip> -x ubuntu --node-name <node-name> -E <node-env> -i <no
     which ever branch is specified in attributes(In our case it is master)
   * It very important to be careful with this approach, can cause
     unwanted issues.
+
+### How do you control params, environment variables?
+* The environment variables for apps
+1) Not encrypted  <--- ./environments/* folder
+2) Encrypted      <--- ./data_bags/<app>/* folder
+
+* db creds are in <--- ./data_bags/databases/* folder
+
 
 ### How do I update data bags ?
 * To update any variable for application, you need to update the databag
