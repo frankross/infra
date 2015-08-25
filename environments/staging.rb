@@ -3,7 +3,7 @@ description 'staging environment file'
 
 cookbook_versions ({
   'base'                => '= 0.0.6',
-  'ecom-platform'       => '= 0.1.20',
+  'ecom-platform'       => '= 0.1.21',
   'ecom-docs'           => '= 0.1.5',
   'library'             => '= 0.0.26',
   'proxy'               => '= 0.1.10'
@@ -14,7 +14,7 @@ override_attributes(
   "ecom-platform" => {
     "cname" =>'staging.frankross.in',
     "environment_variables" => {
-      :AWS_S3_BUCKET_NAME=>"ecom-platform-assets",
+      :AWS_S3_BUCKET_NAME=>"emami-staging",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
     }
