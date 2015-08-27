@@ -26,7 +26,7 @@ aws_region       = awscli_aws_creds["region"]
 AWS.config(:access_key_id => aws_access_key, :secret_access_key => aws_secret_key, :region => aws_region)
 ec2        = AWS::EC2.new
 dns_records= AWS::Route53.new.client.list_resource_record_sets(options = {:hosted_zone_id=>node["aws"]["route53"]["zone_id"]})[:resource_record_sets]
-
+a_records   = dns_records.select { |x|  x[:type] == "A"}
 
 ec2.instances.each do |instance|
   if instance.status.to_s.downcase == "running" and instance.tags["Name"] != nil
@@ -34,6 +34,7 @@ ec2.instances.each do |instance|
     instance_ip              =          instance.private_ip_address.to_s
     a_record_name            =          "#{instance_name}.#{node['aws']['route53']['zone']}"
     instance_dns_record      =          dns_records.select {|k| k[:name]=="#{a_record_name}."}
+    a_records.delete(instance_dns_record[0])
 
     unless instance_name.nil?
       if instance_dns_record == [] or instance_dns_record[0][:resource_records][0][:value] != instance_ip
@@ -50,6 +51,12 @@ ec2.instances.each do |instance|
       end
     end
   end
+end
+
+a_records.each do |record|
+  rrsets = AWS::Route53::HostedZone.new(node["aws"]["route53"]["zone_id"]).rrsets
+  rrset = rrsets[record[:name], 'A']
+  rrset.delete
 end
 
 cname_servers = {}
