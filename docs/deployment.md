@@ -63,8 +63,6 @@ So in order to deploy a particular commit move your head to that commit
 and push to github.
 
 
-
-
 Chef-client run for haproxy servers
 
 1) Haproxy user creation
