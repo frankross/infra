@@ -49,6 +49,21 @@ and other scripts are restarted.
 8) Process checks are added after that for datadog
 
 
+Deploying a particular commit or branch
+
+
+chef check this variable for the branch it wants to deploy.
+
+For example
+default['ecom-platform']['vcs_branch']        = "master"
+If you want to deploy other branch change this attribute and then follow
+the docs ChangeCookbook.md
+Deployments will always clone the head of the branch which you specified
+So in order to deploy a particular commit move your head to that commit
+and push to github.
+
+
+
 
 Chef-client run for haproxy servers
 
