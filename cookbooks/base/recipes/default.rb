@@ -6,6 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+execute "update" do
+  command "apt-get -y update"
+end.run_action(:run)
+
 include_recipe "base::_hostname"
 include_recipe "base::users_manage"
 include_recipe "ntp::default"
