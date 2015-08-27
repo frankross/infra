@@ -130,7 +130,7 @@ databags if someone commits. Alternatively use
 knife data bag from file <databag> <file.json>
 
 2) Encrypted data bags
-To change these download the secret file from 
+To change these download the secret file from
 s3://emami-ci-packages/deploy_keys/databag_secret
 
 now to edit use this command. For example to edit ecom-platform databags
@@ -152,7 +152,7 @@ where the detailed description for that definition is given.
 Then you can start reading the ecom-platform cookbook.
 
 ###How do i read a specific cookbook with parameters
-A cookbook has 
+A cookbook has
 1)attributes
 2)recipes
 3)files
@@ -162,4 +162,4 @@ When you start reading a cookbook it will contain attributes , templates
 and resource from other cookbooks.The files are in directories with same
 name in a specific cookbook.
 
-Please read DeploymentReadme.md next
+Please read [DeploymentReadme.md](./DeploymentReadMe.md) next
