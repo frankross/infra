@@ -14,6 +14,7 @@ override_attributes(
   "ecom-platform" => {
     "cname" =>'staging.frankross.in',
     "environment_variables" => {
+      :APP_NAME => "EFR e-Com (Staging)",
       :AWS_S3_BUCKET_NAME=>"emami-staging",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
