@@ -21,6 +21,9 @@ DEPENDENCIES
     revision: 0208c4761ef0de0d6d081868564508b3b9a9d24d
   nat_server
     path: cookbooks/nat_server
+  postgresql
+    git: https://github.com/hw-cookbooks/postgresql.git
+    revision: d57d9e820f90d7e09fc4467d51ff9b5408be9048
   proxy
     path: cookbooks/proxy
   teamcity
@@ -33,7 +36,7 @@ DEPENDENCIES
 
 GRAPH
   apt (2.7.0)
-  base (0.0.6)
+  base (0.0.7)
     datadog (>= 0.0.0)
     ntp (>= 0.0.0)
     sudo (>= 0.0.0)
@@ -48,11 +51,11 @@ GRAPH
     chef_handler (~> 1.1.0)
     yum (>= 0.0.0)
   dmg (2.2.2)
-  dns_updater (0.1.0)
+  dns_updater (0.1.1)
   ecom-docs (0.1.6)
     base (>= 0.0.0)
     library (>= 0.0.0)
-  ecom-platform (0.1.20)
+  ecom-platform (0.1.21)
     base (>= 0.0.0)
     library (>= 0.0.0)
   emami_memcached (0.1.0)
@@ -77,7 +80,7 @@ GRAPH
     python (>= 0.0.0)
   iptables (1.0.0)
   java (1.31.0)
-  library (0.0.26)
+  library (0.0.27)
     datadog (>= 0.0.0)
     logrotate (>= 0.0.0)
     nginx (>= 0.0.0)
@@ -98,16 +101,16 @@ GRAPH
     yum-epel (~> 0.3)
   ntp (1.8.6)
   ohai (2.0.1)
-  openssl (4.2.0)
+  openssl (4.0.0)
     chef-sugar (>= 0.0.0)
   openvpn (2.1.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
   packagecloud (0.0.19)
-  postgresql (3.4.16)
+  postgresql (3.4.20)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
-    openssl (>= 0.0.0)
+    openssl (~> 4.0.0)
   proxy (0.1.10)
     datadog (>= 0.0.0)
     iptables (>= 0.0.0)
@@ -127,7 +130,7 @@ GRAPH
   teamcity (0.2.2)
     apt (~> 2.0)
     yum (~> 3.0)
-  teamcity-ci (0.1.2)
+  teamcity-ci (0.1.4)
     datadog (>= 0.0.0)
     java (>= 0.0.0)
     library (>= 0.0.0)

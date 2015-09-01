@@ -8,3 +8,5 @@ default["ruby"]["s3_location"]                = "s3://emami-ci-packages/ruby/rub
 default["databag"]["secret_location"]         = "s3://emami-ci-packages/deploy_keys/databag_secret"
 default["s3_bucket"]                          = "s3://emami-ci-packages"
 default["vpc"]["cidr"]                        = "10.60.0.0/16"
+override['postgresql']['client']['packages']  = ["postgresql-client-9.4","libpq-dev"]
+override['postgresql']['version']             = 9.4

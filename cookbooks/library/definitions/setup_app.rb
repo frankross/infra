@@ -104,7 +104,7 @@ define :setup_app do
   end
 
   execute "bundle install" do
-    command "PATH=#{node.ruby.bin_location}:$PATH bundle install --path gems"
+    command "PATH=#{node.ruby.bin_location}:$PATH bundle install --without development test --path gems"
     user app_user
     group app_group
     cwd "#{app_location}/current"
