@@ -8,10 +8,10 @@ if node.platform_family == "rhel"
   override['postgresql']['server']['packages']  = %w{postgresql-server}
   override['postgresql']['contrib']['packages'] = %w{postgresql-contrib}
 elsif node.platform_family == "debian"
-  override['postgresql']['version']             = "9.3"
-  override['postgresql']['server']['packages']  = ["postgresql-9.3"]
-  override['postgresql']['client']['packages']  = ["postgresql-client-9.3","libpq-dev"]
-  override['postgresql']['contrib']['packages'] = ["postgresql-contrib-9.3"]
+  override['postgresql']['version']             = "9.4"
+  override['postgresql']['server']['packages']  = ["postgresql-9.4"]
+  override['postgresql']['client']['packages']  = ["postgresql-client-9.4","libpq-dev"]
+  override['postgresql']['contrib']['packages'] = ["postgresql-contrib-9.4"]
   override['postgresql']['pg_hba']              = [
     {:type => 'host', :db => 'all', :user => 'all', :addr => '0.0.0.0/0',:method => 'trust'},
     {:type => 'local', :db => 'all', :user => 'postgres', :addr => nil, :method => 'trust'},
