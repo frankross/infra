@@ -1,6 +1,6 @@
 default["teamcity_server"]["version"] = "9.0.5"
 override['java']['jdk_version']       = '7'
-default["ci"]["ruby_version"]         = ["2.1.5","2.2.2"]
+default["ci"]["ruby_version"]         = ["2.2.2"]
 default["ci"]["ruby_gems"]            = ["bundle"]
 override['java']['jdk_version']       = '7'
 if node.platform_family == "rhel"
