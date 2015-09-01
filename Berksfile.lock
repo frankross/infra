@@ -1,4 +1,7 @@
 DEPENDENCIES
+  apt
+    git: https://github.com/opscode-cookbooks/apt.git
+    revision: 6c5ea2deec070219f49145aca7e9f7a4e487a3e4
   base
     path: cookbooks/base
   dns_updater
@@ -35,7 +38,7 @@ DEPENDENCIES
     path: cookbooks/vpn
 
 GRAPH
-  apt (2.7.0)
+  apt (2.8.2)
   base (0.0.7)
     datadog (>= 0.0.0)
     ntp (>= 0.0.0)
