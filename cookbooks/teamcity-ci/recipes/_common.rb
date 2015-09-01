@@ -4,7 +4,7 @@ if node.platform_family =="rhel"
     not_if { ::File.exists? "/etc/yum.repos.d/epel.repo" }
   end
 elsif node.platform_family == "debian"
-  ['postgresql-client-9.4','openssl','libssl-dev','libreadline6-dev','libxml2','libxml2-dev',
+  ['libsqlite3-dev','postgresql-client-9.4','openssl','libssl-dev','libreadline6-dev','libxml2','libxml2-dev',
    'libxslt1.1','libxslt1-dev','libpcre3-dev',"sqlite3","libsqlite3-dev","libqt4-dev",
    "imagemagick","libmagickwand-dev","nodejs","npm","libmysqlclient-dev","build-essential"].each do |pkg|
      package pkg
