@@ -12,4 +12,4 @@ pg_dump -h $HOST --port=5432 --username=$USER --dbname=$DB_NAME > $BACKUP_NAME.s
 tar -zcf $BACKUP_NAME.sql.tar $BACKUP_NAME.sql
 aws s3 cp $BACKUP_NAME.sql.tar s3://emami-rds-backups/$DB_NAME/$2/
 rm -f $BACKUP_NAME*
-aws s3 ls s3://emami-rds-backups/$DB_NAME/$2/ | sort | head $3 | awk '{print $4}' |xargs -I {} aws s3 rm {}
+aws s3 ls s3://emami-rds-backups/$DB_NAME/$2/ | sort | head $3 | awk '{print $4}' |xargs -I {} aws s3 rm s3://emami-rds-backups/$DB_NAME/$2/{}
