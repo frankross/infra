@@ -5,7 +5,6 @@ USER=$(echo $db_details | jq ".production"".username" | sed 's/"//g')
 HOST=$(echo $db_details |jq ".production"".host" | sed 's/"//g')
 DB_NAME=$(echo $db_details |jq ".production"".database" | sed 's/"//g')
 
-echo $PASSWORD $USER $HOST $DB_NAME
 export PGPASSWORD=$PASSWORD
 BACKUP_NAME=$1_$2_production-$(date +"%Y%m%d%H%M")
 pg_dump -h $HOST --port=5432 --username=$USER --dbname=$DB_NAME > $BACKUP_NAME.sql
