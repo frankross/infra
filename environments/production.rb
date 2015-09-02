@@ -12,6 +12,7 @@ cookbook_versions ({
 override_attributes(
 
   "ecom-platform" => {
+    "vcs_branch" => "production",
     "cname" =>'www.frankross.in',
     "environment_variables" => {
       :APP_NAME => "'EFR e-Com (production)'",
