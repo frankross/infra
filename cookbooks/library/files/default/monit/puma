@@ -1,5 +1,6 @@
 check process puma
         matching "puma"
-        start program = "/etc/init.d/puma start"
+        start program = "/etc/init.d/puma start" with timeout 60 seconds
         stop program = "/etc/init.d/puma stop"
         if 5 restarts with 5 cycles then timeout
+        if memory usage > 70% for 5 cycles then restart
