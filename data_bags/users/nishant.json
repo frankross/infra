@@ -2,7 +2,7 @@
   "id"        : "nishant",
   "comment"   : "nishant",
   "home"      : "/home/nishant",
-  "groups"    : ["internal","staging"],
+  "groups"    : ["sysadmin"],
   "shell"     : "\/bin\/bash",
   "ssh_keys"  : [
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtAbYPufr3PyxbEkdaFIB0dPP5Jt5Z293+K+iQZi23N8JI+WrYPcv0tlgjIIkJs1foeEDXK4dQbFtYF5XaezCKuA0FwBAn5TvpdSn7rV6HHrWDV7CBURaIFMMvgWqpvtRkYe8/4oVUAynYnJ6vo+PzxNtcW5Y3KNxoKTw4M3VFt0E8qa0OaGiUgdzOqXCp3jOOKKf40JURhsLFXzUM9XDNV0/WiYnvC9FDosLe3X8l9a5Y6Ss/QBghqWuMgLnEPL+uTPM0uIRfAn+wk9iPqGdfmTfiD9Urf0oR3FNM0uaeCNBET7BI4vhUrRFxhAckl1RYlYl6u+CeBfCVy2Aj0wBoeVrN9VCtg9dHGN82blCPJDtWgEuxYbwiDBF17OhjBVHbMLzLayXwWKU7vV/HYI2LMhLkTbq5LDSsmwPXGnnwYBmeaswAJQO9WQDG5EBOerCzxrVW9CJrcNWPmuiC4bJnTmjpHjxV514dBzqc9El751+JlJzuOUiAcRTxF+BSMo9oko2KY/VUjro1ygtLJ+DYqsyvjg1pRBgKw7gH/wVbVgoGK1XgIACUmk7w6hkqsXZkPEf1HXjF+De2kFZAf39XTnvsUZtgesGLKGV9t8SwnekAJaYNXdZBxinvBpiEwK9s00MZkKpBHsE2Gw7RszoYP+hWlXj5n4wHxv9hk/j06Q== nishant@bigbinary.com"
