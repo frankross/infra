@@ -8,6 +8,7 @@
 #
 execute "update" do
   command "apt-get -y update"
+  action :nothing
 end.run_action(:run)
 
 include_recipe "base::_hostname"
