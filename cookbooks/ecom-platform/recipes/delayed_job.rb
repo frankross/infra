@@ -6,7 +6,8 @@ app                                  = "ecom-platform"
 app_location                         = node.apps.location
 app_user                             = node.apps[:user]
 app_group                            = node.apps[:group]
-node.set["apps"]["init_script_name"] = "dj"
+
+node.override["apps"]["init_script_name"] = "dj"
 node.default["monitoring"]["processes"]  = [{name: 'delayed_job', search_string: ['delayed_job']}]
 
 include_recipe "ecom-platform::_common"
