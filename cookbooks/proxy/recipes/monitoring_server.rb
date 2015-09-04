@@ -5,7 +5,7 @@
 
 include_recipe "datadog::dd-agent"
 
-template "/etc/dd-agent/conf.d/http.py" do
+template "/etc/dd-agent/conf.d/http_check.py" do
   source "http.py.erb"
   owner "dd-agent"
   mode 0755

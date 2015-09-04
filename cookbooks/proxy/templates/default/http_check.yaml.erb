@@ -9,7 +9,7 @@ instances:
         window: <%= i['window'] || 5 %>
         collect_response_time: true
         notify:
-          - @slack-infra
+          - slack-infra
       <% i['notify_members'].each do |member| -%>
           - <%= member %>
       <% end -%>
