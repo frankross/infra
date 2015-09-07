@@ -1,6 +1,6 @@
 default["teamcity_server"]["version"] = "9.0.5"
 override['java']['jdk_version']       = '7'
-default["ci"]["ruby_version"]         = ["2.2.2"]
+default["ci"]["ruby_version"]         = ["2.2.2","2.1.5"]
 default["ci"]["ruby_gems"]            = ["bundle"]
 override['java']['jdk_version']       = '7'
 if node.platform_family == "rhel"
@@ -9,6 +9,7 @@ if node.platform_family == "rhel"
   override['postgresql']['contrib']['packages'] = %w{postgresql-contrib}
 elsif node.platform_family == "debian"
   override['postgresql']['version']             = "9.4"
+  override['postgresql']['dir']                 = "/etc/postgresql/9.4/main"
   override['postgresql']['server']['packages']  = ["postgresql-9.4"]
   override['postgresql']['client']['packages']  = ["postgresql-client-9.4","libpq-dev"]
   override['postgresql']['contrib']['packages'] = ["postgresql-contrib-9.4"]
