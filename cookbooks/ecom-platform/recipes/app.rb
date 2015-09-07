@@ -23,3 +23,7 @@ process_check "ecom-platform" do
   process node["monitoring"]["processes"]
 end
 
+link_release "ecom-platform" do
+  app_location node.apps.location
+  app_service app_service
+end

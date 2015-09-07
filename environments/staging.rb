@@ -3,9 +3,9 @@ description 'staging environment file'
 
 cookbook_versions ({
   'base'                => '= 0.0.7',
-  'ecom-platform'       => '= 0.1.22',
+  'ecom-platform'       => '= 0.1.23',
   'ecom-docs'           => '= 0.1.5',
-  'library'             => '= 0.0.28',
+  'library'             => '= 0.0.29',
   'proxy'               => '= 0.1.12'
 })
 

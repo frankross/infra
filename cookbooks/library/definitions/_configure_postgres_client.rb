@@ -6,6 +6,7 @@ define :_configure_postgres_client   do
   app_location          = params[:app_location]
   app_service           = params[:app_service]
   environment_variables = params[:environment_variables]
+  release_dir           = node.apps.release_dir
 
   include_recipe "postgresql::client"
 
@@ -42,7 +43,7 @@ define :_configure_postgres_client   do
     notifies :restart, "service[#{app_service}]", :delayed
   end
 
-  link "#{app_location}/current/config/database.yml" do
+  link "#{release_dir}/config/database.yml" do
     to "#{app_location}/shared/config/database.yml"
     user app_user
     group app_group
@@ -52,7 +53,7 @@ define :_configure_postgres_client   do
   temp_dir = Chef::Config['file_cache_path']
   dbmigrate   = YAML.load(File.read "#{temp_dir}/sha_number.yml")[node.chef_environment][app]["dbmigrate"]
   execute "db_migrate_#{params[:app_name]}" do
-    cwd "#{app_location}/current"
+    cwd release_dir
     command "PATH=#{node.ruby.bin_location}:$PATH bundle exec rake db:migrate"
     environment "RAILS_ENV" => "production"
     user app_user

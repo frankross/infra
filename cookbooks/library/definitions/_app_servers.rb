@@ -1,9 +1,10 @@
 define :_app_servers do
-  app           = params[:name]
-  app_user      = node.apps[:user]
-  app_group     = node.apps[:group]
-  app_location  = params[:app_location]
-  app_service   = params[:app_service]
+  app          = params[:name]
+  app_user     = node.apps[:user]
+  app_group    = node.apps[:group]
+  app_location = params[:app_location]
+  app_service  = params[:app_service]
+  release_dir  = node.apps.release_dir
 
   include_recipe "nginx"
 
@@ -49,7 +50,7 @@ define :_app_servers do
     notifies :restart, "service[#{app_service}]"
   end
 
-  link "#{app_location}/current/config/puma.rb" do
+  link "#{release_dir}/config/puma.rb" do
     to "#{app_location}/shared/config/puma.rb"
     user app_user
     group app_group

@@ -52,8 +52,12 @@ define :setup_app do
 
   latest_sha   = YAML.load(File.read "#{temp_dir}/sha_number.yml")[node.chef_environment][app]["sha"]
   current_sha  = File.open("#{app_location}/current/.git/refs/heads/deploy", "r").read.delete!("\n") if Dir.exists?("#{app_location}/current")
+  node.override["apps"]["latest_sha"] = latest_sha
+  node.override["apps"]["current_sha"] = current_sha
+  release_dir  = "#{app_location}/releases/#{latest_sha}"
+  node.override["apps"]["release_dir"] = release_dir
 
-  git "#{app_location}/releases/#{latest_sha}" do
+  git release_dir do
     repository node[app]['vcs_address']
     revision node[app]['vcs_branch']
     action :checkout
@@ -67,32 +71,6 @@ define :setup_app do
     cwd "#{node.apps.location}/releases"
   end
 
-  link "#{app_location}/current" do
-    to "#{app_location}/releases/#{latest_sha}"
-    user app_user
-    group app_group
-    not_if { latest_sha == current_sha}
-    notifies :restart, "service[#{app_service}]", :delayed
-  end
-
-  link "#{app_location}/current/gems" do
-    to "#{app_location}/shared/gems"
-    user app_user
-    group app_group
-  end
-
-  link "#{app_location}/current/tmp" do
-    to "#{app_location}/shared/tmp"
-    user app_user
-    group app_group
-  end
-
-  link "#{app_location}/shared/log" do
-    to "#{app_location}/current/log"
-    user app_user
-    group app_group
-  end
-
   execute "ruby-install" do
     command "aws s3 cp #{node["ruby"]["s3_location"]} ./;dpkg -i *.deb"
     cwd Chef::Config['file_cache_path']
@@ -103,11 +81,17 @@ define :setup_app do
     command "gem install bundler"
   end
 
+  link "#{release_dir}/gems" do
+    to "#{app_location}/shared/gems"
+    user app_user
+    group app_group
+  end
+
   execute "bundle install" do
     command "PATH=#{node.ruby.bin_location}:$PATH bundle install --without development test --path gems"
     user app_user
     group app_group
-    cwd "#{app_location}/current"
+    cwd release_dir
   end
 
   template "/etc/default/#{app}.conf" do
