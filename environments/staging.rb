@@ -5,7 +5,7 @@ cookbook_versions ({
   'base'                => '= 0.0.7',
   'ecom-platform'       => '= 0.1.23',
   'ecom-docs'           => '= 0.1.5',
-  'library'             => '= 0.0.29',
+  'library'             => '= 0.0.30',
   'proxy'               => '= 0.1.12'
 })
 
@@ -19,6 +19,12 @@ override_attributes(
       :AWS_S3_BUCKET_NAME=>"emami-staging",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
+    }
+  },
+  "emr" => {
+    "vcs_branch" => "master",
+    "cname" =>'emr-staging.frankross.in',
+    "environment_variables" => {
     }
   },
   "ecom-docs" => {
@@ -39,6 +45,10 @@ override_attributes(
       {
         name: 'ecom-docs',
         cname:'ecom-docs-staging.frankross.in'
+      },
+      {
+        name: 'emr',
+        cname:'emr-staging.frankross.in'
       }
     ]
   },

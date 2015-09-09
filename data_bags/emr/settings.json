@@ -1,0 +1,15 @@
+{
+  "id": "settings",
+  "staging": {
+    "encrypted_data": "+meEIG+MND+fynmrpVvCJ3lvUZPglizMrL61LVuDpM7Zrr+9z06dkawxnNQ9\nwL1XuxYRNs7jOOmSV2r11QS+xJZgqr2QFD2rydvYSIGpjqaWWGG9VrYt/JD+\nPyHoNZAMakM2z/tcJtxahJ1MM3O1gOM9WiWbj5EAW+igydl66aJRLO3E3jHm\nU0JoIia7hlJpsfQN27ZcJI/IjB4zZSPkD/UgvqgPEXq7yZcuZmZsxwXyAwsL\nTLooV8xo6QrsseLEY+HaF40xOa3UGfh00U6W+Q==\n",
+    "iv": "BJiI9EBXKazgGeSSK7qGfw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "production": {
+    "encrypted_data": "B0hamUREgZZJgUAULqYxsvIHql5u58EIY6na5HJd1TiqYGRz/2Y0r9/KdW2d\nKgjHt0Q+RE66YSBKN/ZTMDCK9XlPGooIkiWSPAwtFZmy6O7Fa7SHAM/3FI6v\ncURljJXdoeEafnqygnX89m+UVUj2z6R1iooJ4TyW2FQz1FKscCwxH7TReN2i\n3zrC97iRJkaUzQ3ysl9HnSMRvr/XXQuUlsrWAVDHmGWxgOqqrTT7SRQUeNnC\nheGJIAsScpa1KKDa4GBLoGGRtcYCElvdv3evEg==\n",
+    "iv": "OHt2RzhLnr4WWgXfkxOWCQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

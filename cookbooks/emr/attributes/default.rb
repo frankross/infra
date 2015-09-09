@@ -1,0 +1,11 @@
+default['apps']['user']                       = 'deploy'
+default['apps']['group']                      = 'deploy'
+default['apps']['location']                   = "/srv/www/emr"
+default['apps']['db_server']                  = "postgresql"
+default['emr']['vcs_address']                 = "emr:frankross/emr-rails.git"
+default['emr']['vcs_branch']                  = "master"
+override['nginx']['user']                     = 'deploy'
+default["apps"]["init_script_name"]           = "puma"
+force_override['nginx']['proxy_send_timeout'] = 600
+force_override['nginx']['proxy_read_timeout'] = 600
+override["ruby"]["s3_location"]                = "s3://emami-ci-packages/ruby/ruby-2.1.5-2_amd64.deb"

@@ -5,7 +5,7 @@ cookbook_versions ({
   'base'                => '= 0.0.7',
   'ecom-platform'       => '= 0.1.23',
   'ecom-docs'           => '= 0.1.5',
-  'library'             => '= 0.0.29',
+  'library'             => '= 0.0.30',
   'proxy'               => '= 0.1.11'
 })
 
@@ -19,6 +19,12 @@ override_attributes(
       :AWS_S3_BUCKET_NAME=>"emami-production",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
+    }
+  },
+  "emr" => {
+    "vcs_branch" => "master",
+    "cname" =>'emr.frankross.in',
+    "environment_variables" => {
     }
   },
   "ecom-docs" => {
