@@ -1,14 +1,14 @@
 {
   "id": "settings",
   "staging": {
-    "encrypted_data": "+meEIG+MND+fynmrpVvCJ3lvUZPglizMrL61LVuDpM7Zrr+9z06dkawxnNQ9\nwL1XuxYRNs7jOOmSV2r11QS+xJZgqr2QFD2rydvYSIGpjqaWWGG9VrYt/JD+\nPyHoNZAMakM2z/tcJtxahJ1MM3O1gOM9WiWbj5EAW+igydl66aJRLO3E3jHm\nU0JoIia7hlJpsfQN27ZcJI/IjB4zZSPkD/UgvqgPEXq7yZcuZmZsxwXyAwsL\nTLooV8xo6QrsseLEY+HaF40xOa3UGfh00U6W+Q==\n",
-    "iv": "BJiI9EBXKazgGeSSK7qGfw==\n",
+    "encrypted_data": "4+xE0PQmxt8HTvIKtQzeslZg+YdmWOH4oK+3SVvRGqDstQEWs6Qq+5yd/exn\nOGZH3ukQ/j1SHJYDa5JoaW0WjSojYycM8RgD6zXsoW+uPcL6qzeFKW9hOefI\nOfh5Z/b7C3u6HpR567RWtAvNS2mCRvRY18wRGck1Q7c8WkgtB1r+WtTMKPAm\n2y7e6leMGmqXItyfP4yURk+kiSbuN6moQ7xmJoXAcmzKgfkZVkjygYporAX4\nilhbg9S47ODMXnZPyZ5sjExDeID9yCgvyqitlQ==\n",
+    "iv": "ACCVLjsPERQd1di4QLasKg==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "production": {
-    "encrypted_data": "B0hamUREgZZJgUAULqYxsvIHql5u58EIY6na5HJd1TiqYGRz/2Y0r9/KdW2d\nKgjHt0Q+RE66YSBKN/ZTMDCK9XlPGooIkiWSPAwtFZmy6O7Fa7SHAM/3FI6v\ncURljJXdoeEafnqygnX89m+UVUj2z6R1iooJ4TyW2FQz1FKscCwxH7TReN2i\n3zrC97iRJkaUzQ3ysl9HnSMRvr/XXQuUlsrWAVDHmGWxgOqqrTT7SRQUeNnC\nheGJIAsScpa1KKDa4GBLoGGRtcYCElvdv3evEg==\n",
-    "iv": "OHt2RzhLnr4WWgXfkxOWCQ==\n",
+    "encrypted_data": "Qy8P0ioPjocvmlo1TTOvSB50HE+F5lWX5RolFAQP+IlRpr6/GY5iqJ13+tuC\nSQtyQnnLCdElhwNj/b1ovWYnhNaKQRwLRqo5ngmbdWtGoOZpaYrDPlhPTF2N\ntDX+s21phoAPhH3gRTxVpRslBR18bOc1lheImRSgZBMct2wuXZ3BrBechmop\nBwg5mfgGN1Y3OTQkq3+BruXFJOX9dyIOAHGOmPjYS6sCuNF76TMb8Ut5Isrx\nGYGQRm4uCvpYPOO1DQnJ5J7GoXOdfn4OSxnqng==\n",
+    "iv": "haLxjTbUnYkWZiopvjYUSA==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   }
