@@ -45,7 +45,7 @@ ami_device_name=$(aws ec2 describe-images --image-ids $instance_ami | jq ".Image
 echo "Instance snapshot id is $snapshot_id"
 echo "Instance ami_device_name is $ami_device_name"
 echo "aws ec2 run-instances --image-id $instance_ami --instance-type $instance_type --key-name $key --security-group-ids $security_group --subnet-id $subnet --block-device-mappings \"[{\\\"DeviceName\\\":\\\"$ami_device_name\\\",\\\"Ebs\\\":{\\\"DeleteOnTermination\\\":$delete_on_termination,\\\"SnapshotId\\\":\\\"$snapshot_id\\\",\\\"VolumeSize\\\":$storage_size,\\\"VolumeType\\\":\\\"$storage_type\\\"}}]\""
-ipaddress=$(aws ec2 run-instances --image-id $instance_ami --instance-type $instance_type --key-name $key --security-group-ids $security_group --subnet-id $subnet --block-device-mappings "[{\"DeviceName\":\"$ami_device_name\",\"Ebs\":{\"DeleteOnTermination\":$delete_on_termination,\"SnapshotId\":\"$snapshot_id\",\"VolumeSize\":$storage_size,\"VolumeType\":\"$storage_type\"}}]" | jq ".Instances[0]"".PrivateIpAddress" |  awk -F "\"" '{print $2}')
+ipaddress=$(aws ec2 run-instances --image-id $instance_ami --instance-type $instance_type --key-name $key --security-group-ids sg-07f37a62 $security_group --subnet-id $subnet --block-device-mappings "[{\"DeviceName\":\"$ami_device_name\",\"Ebs\":{\"DeleteOnTermination\":$delete_on_termination,\"SnapshotId\":\"$snapshot_id\",\"VolumeSize\":$storage_size,\"VolumeType\":\"$storage_type\"}}]" | jq ".Instances[0]"".PrivateIpAddress" |  awk -F "\"" '{print $2}')
 echo "Instance ipaddress is $ipaddress"
 until aws ec2 describe-instances --filters "Name=private-ip-address,Values=$ipaddress" | jq ".Reservations[0]"".Instances[0]"".State"".Name" | grep running ; do sleep 1;done
 echo "Instance is available"
