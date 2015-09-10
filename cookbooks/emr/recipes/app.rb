@@ -16,6 +16,9 @@ secret                    = File.read "#{chef_config_path}/#{secret_file_name}"
 settings                  = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
 
 app_environment_variables = {}
+node.default["emr"].environment_variables["API_HOST"]="https://#{node["emr"]["cname"]}"
+node.default["emr"].environment_variables["MAILER_DEFAULT_HOST"]="https://#{node["emr"]["cname"]}"
+node.default["emr"].environment_variables["MAILER_DOMAIN"]="https://#{node["emr"]["cname"]}"
 app_environment_variables.merge! node["emr"].environment_variables
 app_environment_variables.merge! settings
 

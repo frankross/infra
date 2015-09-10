@@ -5,6 +5,7 @@ cookbook_versions ({
   'base'                => '= 0.0.7',
   'ecom-platform'       => '= 0.1.23',
   'ecom-docs'           => '= 0.1.5',
+  'emr'                 => '= 0.1.1',
   'library'             => '= 0.0.30',
   'proxy'               => '= 0.1.11'
 })
@@ -45,6 +46,10 @@ override_attributes(
       {
         name: 'ecom-docs',
         cname:'ecom-docs.frankross.in'
+      },
+      {
+        name: 'emr',
+        cname:'emr.frankross.in'
       }
     ]
   },
