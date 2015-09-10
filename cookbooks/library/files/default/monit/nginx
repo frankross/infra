@@ -2,4 +2,5 @@ check process nginx with pidfile /var/run/nginx.pid
     start program = "/etc/init.d/nginx start" with timeout 60 seconds
     stop program  = "/etc/init.d/nginx stop"
     if 5 restarts with 5 cycles then timeout
-    if memory usage > 70% for 5 cycles then restart
+    check system localhost
+    if memory usage > 85% for 5 cycles then restart
