@@ -1,5 +1,5 @@
 check process remote_syslog with pidfile /var/run/remote_syslog.pid
     start program = "/etc/init.d/remote_syslog start" with timeout 60 seconds
     stop program  = "/etc/init.d/remote_syslog stop"
-    check system localhost
+    check system remote_syslog_system_memory
     if memory usage > 80% for 5 cycles then restart

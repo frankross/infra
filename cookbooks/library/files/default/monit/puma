@@ -3,5 +3,5 @@ check process puma
         start program = "/etc/init.d/puma start" with timeout 60 seconds
         stop program = "/etc/init.d/puma stop"
         if 5 restarts with 5 cycles then timeout
-        check system localhost
+        check system puma_system_memory
         if memory usage > 85% for 5 cycles then restart
