@@ -21,7 +21,7 @@ eecute() {
 
 start() {
     cd $APP_PATH
-    su - $APP_USER -c "cd $APP_PATH;source /etc/default/<%=@app%>.conf;RAILS_ENV=production bundle exec bin/delayed_job --queues=<%=@queues%> -n <%=@count%> start"
+    su - $APP_USER -c "cd $APP_PATH;source /etc/default/<%=@app%>.conf;RAILS_ENV=production bundle exec bin/delayed_job --queues=<%=@queues%> -n <%=@count%> start --pid-dir=<%=@project_path%>/shared/pids"
 
     if [ $? -eq 0 ]; then
         sleep 2
