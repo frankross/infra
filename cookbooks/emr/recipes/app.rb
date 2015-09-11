@@ -22,6 +22,14 @@ node.default["emr"].environment_variables["MAILER_DOMAIN"]="https://#{node["emr"
 app_environment_variables.merge! node["emr"].environment_variables
 app_environment_variables.merge! settings
 
+['libxslt1.1','libxslt1-dev','libpcre3-dev',"imagemagick","libmagickwand-dev","build-essential"].each do |pkg|
+  log 'message' do
+    message "Installing package #{pkg}"
+    level :debug
+  end
+  package pkg
+end
+
 setup_app "#{app}" do
   app_location app_location
   app_service app_service
