@@ -9,7 +9,7 @@ cron "reset_prescriptions" do
 end
 
 cron "dispatch_callbacks" do
-  minute "0"
+  minute "*"
   hour "*"
   user "deploy"
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake dispatch_callbacks >> #{app_location}/current/log/cron.log 2>&1'"
