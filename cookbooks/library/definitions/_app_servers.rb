@@ -78,7 +78,7 @@ define :_app_servers do
   end
 
   papertrail "app" do
-    log_file ["#{app_location}/shared/log/puma.log","/var/log/nginx/*.log"]
+    log_file ["#{app_location}/shared/log/*.log","/var/log/nginx/*.log"]
   end
 
   _logrotate "app_logs" do

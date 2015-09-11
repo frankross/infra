@@ -4,7 +4,7 @@ maintainer_email "vipul@codeignition.co"
 license          "All rights reserved"
 description      "Installs/Configures library"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.0.30"
+version          "0.0.31"
 
 depends 'nginx'
 depends 'postgresql'

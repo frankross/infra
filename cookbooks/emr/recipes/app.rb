@@ -3,6 +3,7 @@ app_service                      = node["apps"]["init_script_name"]
 app_location                     = node.apps.location
 
 
+node.default["monitoring"]["processes"]  = [{name: 'puma', search_string: ['puma']},{name: 'nginx', search_string: ['nginx']}]
 _install_awscli
 
 chef_config_path = Chef::Config['file_cache_path']
@@ -50,6 +51,10 @@ end
 _app_servers "#{app}" do
   app_location app_location
   app_service app_service
+end
+
+process_check "emr" do
+  process node["monitoring"]["processes"]
 end
 
 link_release "emr" do
