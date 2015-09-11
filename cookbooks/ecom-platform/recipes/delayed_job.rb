@@ -15,6 +15,11 @@ include_recipe "ecom-platform::_common"
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
 
+link_release "ecom-platform" do
+  app_location node.apps.location
+  app_service node.apps.init_script_name
+end
+
 execute "create delayed job bin" do
   command "bundle exec rails generate delayed_job"
   env Hash[app_environment_variables.merge("RAILS_ENV" => "production").map{|key, value| [ key.to_s, value.to_s ]}]
