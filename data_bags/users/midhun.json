@@ -1,0 +1,10 @@
+{
+  "id"        : "midhun",
+  "comment"   : "midhun",
+  "home"      : "/home/midhun",
+  "groups"    : ["sysadmin"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCp5KbCnX4QBsosDCDGQ0k0U80ne9C4qplNL4htpYOdVb6whX8lDi6+2gDUMK1VpOuLetuQdqFX+dxJmUBnzSBj2untS7sxBMbOE3diU4HnKaiD9OD0UwmdHHoMu7HkcTuTxafoQwd5XZDQvuzQck+DzmFwmGUir76m5rGoNqQmwk2wwOyZ88kz3T1cSSj6V1IsxJ8aC4HT+Fh06xDOcU+kWqigObgpKHX/sS2htULECb6p6/Q6h256hLlqnBRAUdmHR3z1GXz7NPWFEUIPlhc7W9EYi0TNXRNsVWsFSftG/83vmiLKGexBH6BhH9Xp9oq/16sieicmRd+A45s+Yi1EkIBb3BQSvgY+y7LECALVid4YOC1X18Vs8fchrpFfwnaBF9p8L+Fjc/GxHdVpmCFDltiddfYVJLEvnE+NbsPXupPlSk2L3ljlyG3Shg6T7BjOqckP8ZyzxGYcso4BL0DHEfg6BLLSpKspFF5gyuoHUKyyvnjaEI9x8cHTOC+Z3uRcL9Av8/ow6ncgbSGm7wA7B2HnWmXf292qTEFrceDQo/ZcRzfnBettgRYqxg3DTZD+sNRXfPLToJKFe9Uk+xxA6kWxQBykYNIlFWJO74JapMYFKx26s4p3ogHZ4ncZfwYe0xJlSHtNrZdWEquzNeTWF4E5Pd6pV+o8zGQRtvYHTw== midhun@bigbinary.com"
+  ]
+}
