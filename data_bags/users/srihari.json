@@ -1,0 +1,10 @@
+{
+  "id"        : "srihari",
+  "comment"   : "srihari",
+  "home"      : "/home/srihari",
+  "groups"    : ["sysadmin"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbunUrYAimrmDiD6dkqkgKc2VicPKSbl2Q28mxObCGVGmxIZOJaFsNgLUkT/ua2j9fN9UoD1wYdUSKTzVKeCPttJVMRJBtxbJKv//2EmX/tsfwG92CQLt3/u0sXAA02pPN9IYoePqc16x9fCoHNC6Iy55JP3OpgkLeh/keVaT7I3tyTWiqtFj1hSlFFLe6/6LjSeSlJEHsMtekpSsF12llx+XhIptaumngGL8a+HGQLDGEzHXF4m9BLHb/p5OjJ7G8UUG6mt8Xf3PgISinHZb22e0/ftFJ0NIiPXY3tbT7/kod/m3XLoOQ9/S5AdR7Dco+SXT3uAzhu3OMUlLDsMT/ srihari@bigbinary.com"
+  ]
+}
