@@ -38,3 +38,6 @@ There are the 4 groups
 	access to all instances
 
 Please give accesses as needed.
+
+
+#### [Add User to VPN](https://github.com/frankross/infra/blob/master/docs/add_user_to_vpn.md)
