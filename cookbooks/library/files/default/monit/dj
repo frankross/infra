@@ -4,4 +4,4 @@ check process dj
         stop program = "/etc/init.d/dj stop"
         if 5 restarts with 5 cycles then timeout
         check system dj_system_memory
-        if memory usage > 85% for 5 cycles then restart
+        if memory usage > 70% for 2 cycles then restart

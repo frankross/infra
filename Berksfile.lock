@@ -1,7 +1,7 @@
 DEPENDENCIES
   apt
     git: https://github.com/opscode-cookbooks/apt.git
-    revision: 6c5ea2deec070219f49145aca7e9f7a4e487a3e4
+    revision: bf1cdce1f8ae60a516c532146414b9f8b455bdd0
   base
     path: cookbooks/base
   dns_updater
@@ -12,16 +12,18 @@ DEPENDENCIES
     path: cookbooks/ecom-platform
   emami_memcached
     path: cookbooks/emami_memcached
+  emr
+    path: cookbooks/emr
   go
     git: https://github.com/ThoughtWorksInc/go-cookbook.git
-    revision: bedb74fc6710eaaf88ed3ccf3c55b0bfd0ffcd98
+    revision: 2f07096d3301f3c7f68021eb90f11bb09219f436
   go-ci
     path: cookbooks/go-ci
   library
     path: cookbooks/library
   memcached
     git: https://github.com/opscode-cookbooks/memcached.git
-    revision: 0208c4761ef0de0d6d081868564508b3b9a9d24d
+    revision: 220e202cce152ed08a07ce3f2f5d023442b906b0
   nat_server
     path: cookbooks/nat_server
   postgresql
@@ -44,26 +46,29 @@ GRAPH
     ntp (>= 0.0.0)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
-  bluepill (2.3.1)
+  bluepill (2.4.0)
     rsyslog (>= 0.0.0)
   build-essential (2.2.3)
   chef-sugar (3.1.1)
-  chef_handler (1.1.9)
-  datadog (2.1.0)
+  chef_handler (1.2.0)
+  datadog (0.1.2)
     apt (>= 0.0.0)
-    chef_handler (~> 1.1.0)
+    chef_handler (>= 1.0.6)
     yum (>= 0.0.0)
   dmg (2.2.2)
   dns_updater (0.1.1)
-  ecom-docs (0.1.6)
+  ecom-docs (0.1.7)
     base (>= 0.0.0)
     library (>= 0.0.0)
-  ecom-platform (0.1.21)
+  ecom-platform (0.1.25)
     base (>= 0.0.0)
     library (>= 0.0.0)
   emami_memcached (0.1.0)
     memcached (>= 0.0.0)
-  git (4.2.2)
+  emr (0.1.6)
+    base (>= 0.0.0)
+    library (>= 0.0.0)
+  git (4.3.4)
     build-essential (>= 0.0.0)
     dmg (>= 0.0.0)
     windows (>= 0.0.0)
@@ -82,8 +87,8 @@ GRAPH
   htpasswd (0.2.4)
     python (>= 0.0.0)
   iptables (1.0.0)
-  java (1.31.0)
-  library (0.0.27)
+  java (1.35.0)
+  library (0.0.32)
     datadog (>= 0.0.0)
     logrotate (>= 0.0.0)
     nginx (>= 0.0.0)
@@ -91,7 +96,6 @@ GRAPH
   logrotate (1.9.2)
   memcached (1.8.0)
     runit (~> 1.0)
-    yum (~> 3.0)
     yum-epel (>= 0.0.0)
   nat_server (0.1.3)
     iptables (>= 0.0.0)
@@ -109,12 +113,12 @@ GRAPH
   openvpn (2.1.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  packagecloud (0.0.19)
+  packagecloud (0.1.0)
   postgresql (3.4.20)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
     openssl (~> 4.0.0)
-  proxy (0.1.10)
+  proxy (0.1.12)
     datadog (>= 0.0.0)
     iptables (>= 0.0.0)
     library (>= 0.0.0)
@@ -126,14 +130,14 @@ GRAPH
     build-essential (>= 0.0.0)
     git (>= 0.0.0)
     ohai (>= 1.1)
-  rsyslog (2.0.0)
+  rsyslog (2.1.0)
   runit (1.7.2)
     packagecloud (>= 0.0.0)
-  sudo (2.7.1)
+  sudo (2.7.2)
   teamcity (0.2.2)
     apt (~> 2.0)
     yum (~> 3.0)
-  teamcity-ci (0.1.4)
+  teamcity-ci (0.1.5)
     datadog (>= 0.0.0)
     java (>= 0.0.0)
     library (>= 0.0.0)
@@ -143,8 +147,8 @@ GRAPH
   vpn (0.0.3)
     library (>= 0.0.0)
     openvpn (>= 0.0.0)
-  windows (1.37.0)
+  windows (1.38.1)
     chef_handler (>= 0.0.0)
-  yum (3.6.1)
-  yum-epel (0.6.0)
-    yum (~> 3.0)
+  yum (3.7.1)
+  yum-epel (0.6.2)
+    yum (~> 3.2)
