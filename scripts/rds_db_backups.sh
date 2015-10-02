@@ -7,8 +7,20 @@ DB_NAME=$(echo $db_details |jq ".production"".database" | sed 's/"//g')
 
 export PGPASSWORD=$PASSWORD
 BACKUP_NAME=$1_$2_production-$(date +"%Y%m%d%H%M")
+echo "starting pg dump"
 pg_dump -h $HOST --port=5432 --username=$USER --dbname=$DB_NAME > $BACKUP_NAME.sql
+
+echo "pg dump complete..; preparing to compress dump"
 tar -zcf $BACKUP_NAME.sql.tar $BACKUP_NAME.sql
-aws s3 cp $BACKUP_NAME.sql.tar s3://emami-rds-backups/$DB_NAME/$2/
+
+echo "compression complete..; preparing to upload to s3"
+echo "--------------------- S3 CP START ---------------------------------"
+aws s3 cp --debug $BACKUP_NAME.sql.tar s3://emami-rds-backups/$DB_NAME/$2/
+echo "--------------------- S3 CP STOP  ---------------------------------"
+
+echo "remove generated dump file..;"
 rm -f $BACKUP_NAME*
-aws s3 ls s3://emami-rds-backups/$DB_NAME/$2/ | sort | head $3 | awk '{print $4}' |xargs -I {} aws s3 rm s3://emami-rds-backups/$DB_NAME/$2/{}
+
+echo "remove old backup"
+echo "--------------------- S3 RM START ---------------------------------"
+aws s3 ls --debug s3://emami-rds-backups/$DB_NAME/$2/ | sort | head $3 | awk '{print $4}' |xargs -I {} aws s3 rm --debug s3://emami-rds-backups/$DB_NAME/$2/{}
