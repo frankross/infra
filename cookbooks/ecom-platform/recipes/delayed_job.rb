@@ -27,25 +27,17 @@ execute "create delayed job bin" do
   not_if { ::File.exists?("#{app_location}/current/bin/delayed_job") }
 end
 
-
-worker_queue_map = {
-  :sms => 2,
-  :upload => 2,
-  :algolia => 2,
-  :download => 1,
-  :* => 1
-}
-queue_config = ""
-worker_queue_map.each do |key, value|
-  queue_config << " --pool=#{key}:#{value}"
-end
+worker_counts = {'default' => 1, 'slow' => 1, 'image' => 1}
+queues = worker_counts.keys.join(",")
+count = worker_counts.values.inject(&:+)
 
 template "/etc/init.d/dj" do
   source "dj/dj.erb"
   variables(app: app,
             user: app_user,
+            queues: queues,
+            count: count,
             group: app_group,
-            queue_config: queue_config,
             env: node.chef_environment,
             project_path: app_location)
   mode "775"
