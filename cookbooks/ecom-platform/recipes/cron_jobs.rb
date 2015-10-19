@@ -14,3 +14,10 @@ cron "sync distribution center" do
   user "deploy"
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake asset_tracker:sync_distribution_centers >> #{app_location}/current/log/cron.log 2>&1'"
 end
+
+cron "update categories active variants" do
+  minute "0"
+  hour "23"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:active_variants_in_category >> #{app_location}/current/log/cron.log 2>&1'"
+end
