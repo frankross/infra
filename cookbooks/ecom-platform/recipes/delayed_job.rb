@@ -27,7 +27,6 @@ execute "create delayed job bin" do
   not_if { ::File.exists?("#{app_location}/current/bin/delayed_job") }
 end
 
-
 worker_queue_map = {
   :sms => 2,
   :upload => 2,
@@ -35,6 +34,7 @@ worker_queue_map = {
   :download => 1,
   :* => 1
 }
+
 queue_config = ""
 worker_queue_map.each do |key, value|
   queue_config << " --pool=#{key}:#{value}"
