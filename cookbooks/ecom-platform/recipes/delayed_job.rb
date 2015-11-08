@@ -74,7 +74,7 @@ process_check "ecom-platform" do
 end
 
 papertrail "app" do
-  log_file ["#{app_location}/shared/log/*.log","/var/log/syslog"]
+  log_file ["#{app_location}/current/log/*.log","#{app_location}/shared/log/*.log","/var/log/syslog"]
 end
 
 monit "dj"
