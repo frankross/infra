@@ -2,6 +2,7 @@ check process dj
         matching "delayed_job"
         start program = "/etc/init.d/dj start" with timeout 60 seconds
         stop program = "/etc/init.d/dj stop"
+        if totalmemory > 90% for 2 cycles then restart
         if 5 restarts with 5 cycles then timeout
         check system dj_system_memory
         if memory usage > 70% for 2 cycles then restart
