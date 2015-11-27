@@ -17,6 +17,10 @@ iptables_rule 'nat' do
   action :enable
 end
 
+iptables_rule 'vpn' do
+  action :enable
+end
+
 case node.platform_family
 when "debian"
   network_init_service = "networking"
