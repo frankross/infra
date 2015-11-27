@@ -1,6 +1,6 @@
 # Knife User
 
-Log in to chef-server 10.60.0.96
+Log in to chef-server 10.70.0.96
 
 Run this command to create a user
 
