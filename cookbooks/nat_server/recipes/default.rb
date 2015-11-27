@@ -33,7 +33,7 @@ service network_init_service do
 end
 
 execute "adding ip4 forward" do
-  command "sed -i 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/' /etc/sysctl.conf;echo 1 > /proc/sys/net/ipv4/ip_forward"
+  command "sed -i 's/#net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/' /etc/sysctl.conf;echo 1 > /proc/sys/net/ipv4/ip_forward"
   notifies :restart, "service[#{network_init_service}]", :delayed
   not_if "cat /etc/sysctl.conf | grep net.ipv4.ip_forward |grep 1"
   user "root"
