@@ -1,4 +1,4 @@
-aws s3 cp s3://emami-ci-packages/deploy_keys/databag_secret ~/.chef
+aws s3 cp s3://emami-ci-packages-2/deploy_keys/databag_secret ~/.chef
 db_details=$(knife data bag show databases ecom-platform --secret-file ~/.chef/databag_secret -F json)
 PASSWORD=$(echo $db_details| jq ".production"".password" | sed 's/"//g')
 USER=$(echo $db_details | jq ".production"".username" | sed 's/"//g')

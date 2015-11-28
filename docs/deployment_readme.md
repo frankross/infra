@@ -4,7 +4,7 @@ We use continues deployment strategy in which whenever there is a commit on mast
 
 We maintain a file named `sha_number.yml` in which we specify the sha number of code which will be deployed on the servers.
 Production and staging have separate entries. When we trigger staging deployment it picks up the latest commit from
-branch specified and writes that to sha_number.yml file. Then it uploads it to s3 bucket emami-ci-packages.
+branch specified and writes that to sha_number.yml file. Then it uploads it to s3 bucket emami-ci-packages-2.
 
 #### Chef-client run for app servers
 
@@ -41,9 +41,9 @@ production.
 
 
 Chef checks the below mentioned variable for the branch it wants to deploy. For example:
-	
+
 	default['ecom-platform']['vcs_branch']        = "master"
-	
+
 If you want to deploy other branch change this attribute and then follow the docs `ChangeCookbook.md`. Deployments will always clone the head of the branch which you specified. So in order to deploy a particular commit move your head to that commit
 and push to github.
 

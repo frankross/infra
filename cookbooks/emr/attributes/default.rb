@@ -8,4 +8,4 @@ override['nginx']['user']                     = 'deploy'
 default["apps"]["init_script_name"]           = "puma"
 force_override['nginx']['proxy_send_timeout'] = 600
 force_override['nginx']['proxy_read_timeout'] = 600
-override["ruby"]["s3_location"]                = "s3://emami-ci-packages/ruby/ruby-2.1.5-2_amd64.deb"
+override["ruby"]["s3_location"]                = "s3://emami-ci-packages-2/ruby/ruby-2.1.5-2_amd64.deb"

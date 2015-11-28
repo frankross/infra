@@ -94,9 +94,9 @@ Chef Structure
 	* Choose subnets - public or private
 	* Launch the box
 	* Install chef client using knife bootstrap
-	
+
 		`knife bootstrap <node-ip> -x ubuntu --node-name <node-name> -E <node-env> -i <node-key> --sudo`
-	
+
 	* start adding new cook books
 
 ### How do I run chef-client on app servers ?
@@ -104,7 +104,7 @@ Chef Structure
 * Run using knife
   * Logic is to search for all node with a particular recipe, and run command on them
   * knife ssh "chef_environment:production AND recipe:APP_NAME\:\:app"
-    "sudo chef-client" -x 'ubuntu' -a ipaddress -i ~/.ssh/key --no-host-key-verify" 
+    "sudo chef-client" -x 'ubuntu' -a ipaddress -i ~/.ssh/key --no-host-key-verify"
   * example, knife ssh 'chef_environment:production AND recipe:ecom-platform\:\:app' 'sudo chef-client' -x 'ubuntu' -a ipaddress -i ~/.ssh/emami-aws-master-key.pem --no-host-key-verify
 
 * Run using CI build
@@ -138,18 +138,18 @@ knife data bag from file <databag> <file.json>
 
 ##### Encrypted data bags
 
-To change these download the secret file from 
+To change these download the secret file from
 
-	s3://emami-ci-packages/deploy_keys/databag_secret
+	s3://emami-ci-packages-2/deploy_keys/databag_secret
 
 now to edit use this command. For example to edit ecom-platform databags
 
 	knife data bag edit ecom-platform settings --secret-file ./.chef/databag_secret
 
 Save the changes. Now replace the existing `./data_bags/ecom-platfomr/settings.json` with the output of this command
-	
+
 	knife data bag show ecom-platform settings -F json
-	
+
 and push to github otherwise your changes will be removed.
 
 
@@ -163,7 +163,7 @@ Then you can start reading the ecom-platform cookbook.
 
 ### How do i read a specific cookbook with parameters
 
-A cookbook has 
+A cookbook has
 
 1. attributes
 2. recipes
