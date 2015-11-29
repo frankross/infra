@@ -138,7 +138,7 @@ GRAPH
   teamcity (0.2.2)
     apt (~> 2.0)
     yum (~> 3.0)
-  teamcity-ci (0.1.5)
+  teamcity-ci (0.1.7)
     datadog (>= 0.0.0)
     java (>= 0.0.0)
     library (>= 0.0.0)
