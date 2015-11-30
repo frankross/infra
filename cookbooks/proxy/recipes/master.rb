@@ -6,9 +6,9 @@ template '/etc/keepalived/keepalived.conf' do
   source 'keepalived.conf.erb'
   mode '644'
   variables(
-    state: 'SLAVE',
+    state: 'MASTER',
     peers: peers,
-    priority: 98
+    priority: 101
   )
   action :create
   notifies :restart, "service[keepalived]"

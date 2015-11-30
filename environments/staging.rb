@@ -7,7 +7,7 @@ cookbook_versions ({
   'ecom-docs'           => '= 0.1.7',
   'emr'                 => '= 0.1.5',
   'library'             => '= 0.0.36',
-  'proxy'               => '= 0.1.12'
+  'proxy'               => '= 0.1.16'
 })
 
 override_attributes(
