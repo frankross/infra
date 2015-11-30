@@ -124,7 +124,7 @@ GRAPH
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
     openssl (~> 4.0)
-  proxy (0.1.15)
+  proxy (0.1.16)
     datadog (>= 0.0.0)
     iptables (>= 0.0.0)
     library (>= 0.0.0)
