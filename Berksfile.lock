@@ -4,6 +4,7 @@ DEPENDENCIES
     revision: 8bee2c21fc6beec1556a2d4ea359cdf49a49c5b5
   base
     path: cookbooks/base
+  datadog (= 1.1.1)
   dns_updater
     path: cookbooks/dns_updater
   ecom-docs
@@ -50,11 +51,11 @@ GRAPH
     rsyslog (~> 2.0)
   build-essential (2.2.4)
   chef-sugar (3.1.1)
-  chef_handler (1.2.0)
+  chef_handler (1.1.9)
   compat_resource (12.5.14)
-  datadog (0.1.2)
+  datadog (1.1.1)
     apt (>= 0.0.0)
-    chef_handler (>= 1.0.6)
+    chef_handler (~> 1.1.0)
     yum (>= 0.0.0)
   dmg (2.3.0)
   dns_updater (0.1.1)
@@ -91,7 +92,7 @@ GRAPH
     compat_resource (>= 0.0.0)
   java (1.36.0)
     apt (>= 0.0.0)
-  library (0.0.34)
+  library (0.0.36)
     datadog (>= 0.0.0)
     logrotate (>= 0.0.0)
     nginx (>= 0.0.0)

@@ -20,10 +20,12 @@ define :_app_servers do
    group "www-data"
   end
 
+
   node.default['datadog']['nginx']['instances']=[{:nginx_status_url => "http://#{node['ipaddress']}/nginx_status/",
                                                   :tags => ["#{node['ipaddress']}"]
   }]
   node.override["datadog"]["tags"].push("nginx")
+
   include_recipe "datadog::nginx"
 
   # nginx.conf.erb should be in cookbook which is calling this definition
