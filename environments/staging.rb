@@ -6,7 +6,7 @@ cookbook_versions ({
   'ecom-platform'       => '= 0.1.27',
   'ecom-docs'           => '= 0.1.7',
   'emr'                 => '= 0.1.5',
-  'library'             => '= 0.0.31',
+  'library'             => '= 0.0.34',
   'proxy'               => '= 0.1.12'
 })
 
