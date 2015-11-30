@@ -58,7 +58,7 @@ GRAPH
     chef_handler (~> 1.1.0)
     yum (>= 0.0.0)
   dmg (2.3.0)
-  dns_updater (0.1.1)
+  dns_updater (0.1.5)
   ecom-docs (0.1.8)
     base (>= 0.0.0)
     library (>= 0.0.0)
