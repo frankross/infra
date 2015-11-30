@@ -3,11 +3,11 @@ description 'production environment file'
 
 cookbook_versions ({
   'base'                => '= 0.0.7',
-  'ecom-platform'       => '= 0.1.25',
-  'ecom-docs'           => '= 0.1.7',
-  'emr'                 => '= 0.1.5',
-  'library'             => '= 0.0.31',
-  'proxy'               => '= 0.1.11'
+  'ecom-platform'       => '= 0.1.27',
+  'ecom-docs'           => '= 0.1.8',
+  'emr'                 => '= 0.1.7',
+  'library'             => '= 0.0.36',
+  'proxy'               => '= 0.1.16'
 })
 
 override_attributes(
