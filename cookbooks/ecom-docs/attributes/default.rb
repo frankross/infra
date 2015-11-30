@@ -8,4 +8,4 @@ override['nginx']['user']                     = 'deploy'
 default["apps"]["init_script_name"]           = "puma"
 force_override['nginx']['proxy_send_timeout'] = 600
 force_override['nginx']['proxy_read_timeout'] = 600
-default["ecom-docs"]["s3_bucket"]             = "ecom-docs"
+default["ecom-docs"]["s3_bucket"]             = "ecom-docs-2"

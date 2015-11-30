@@ -27,7 +27,7 @@ def application_pipeline_group app,github_url
                  {command: "bash",arguments: "-c\ncat config/database.yml | grep database| awk '{print $2}' | xargs -I{} sed -i 's/{}/ecom-master/g' ./config/database.yml",run_if: "passed"},
                  {command: "bundle",arguments: "exec\nrake\ndb:create\ndb:migrate\ndb:schema:load",run_if: "passed"},
                  {command: "bundle",arguments: "exec\nrake\nspec",run_if: "passed"},
-                 {command: "aws",arguments: "s3\nsync\n./doc/api/v1/\ns3://ecom-docs",run_if: "passed"}]
+                 {command: "aws",arguments: "s3\nsync\n./doc/api/v1/\ns3://ecom-docs-2",run_if: "passed"}]
         }]
       },
       (staging_deploy app)
