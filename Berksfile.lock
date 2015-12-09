@@ -88,7 +88,7 @@ GRAPH
     python (>= 0.0.0)
   iptables (1.0.0)
   java (1.35.0)
-  library (0.0.38)
+  library (0.0.39)
     datadog (>= 0.0.0)
     logrotate (>= 0.0.0)
     nginx (>= 0.0.0)
