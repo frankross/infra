@@ -32,6 +32,7 @@ worker_queue_map = {
   :upload => 2,
   :algolia => 2,
   :download => 1,
+  :notifications => 1,
   :* => 1
 }
 
