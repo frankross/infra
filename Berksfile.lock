@@ -26,6 +26,9 @@ DEPENDENCIES
     revision: 220e202cce152ed08a07ce3f2f5d023442b906b0
   nat_server
     path: cookbooks/nat_server
+  newrelic
+    git: https://github.com/escapestudios-cookbooks/newrelic.git
+    revision: 95d642e0403fe0282458a327f2249aea626ea821
   postgresql
     git: https://github.com/hw-cookbooks/postgresql.git
     revision: d57d9e820f90d7e09fc4467d51ff9b5408be9048
@@ -41,8 +44,9 @@ DEPENDENCIES
 
 GRAPH
   apt (2.8.2)
-  base (0.0.7)
+  base (0.0.8)
     datadog (>= 0.0.0)
+    newrelic (>= 0.0.0)
     ntp (>= 0.0.0)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
@@ -51,6 +55,7 @@ GRAPH
   build-essential (2.2.3)
   chef-sugar (3.1.1)
   chef_handler (1.2.0)
+  curl (2.0.1)
   datadog (0.1.2)
     apt (>= 0.0.0)
     chef_handler (>= 1.0.6)
@@ -99,6 +104,11 @@ GRAPH
     yum-epel (>= 0.0.0)
   nat_server (0.1.3)
     iptables (>= 0.0.0)
+  newrelic (2.17.0)
+    apt (~> 2.0)
+    curl (>= 0.0.0)
+    python (>= 0.0.0)
+    yum (~> 3.0)
   nginx (2.7.6)
     apt (~> 2.2)
     bluepill (~> 2.3)
