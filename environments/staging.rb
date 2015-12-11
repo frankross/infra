@@ -2,11 +2,11 @@ name 'staging'
 description 'staging environment file'
 
 cookbook_versions ({
-  'base'                => '= 0.0.7',
+  'base'                => '= 0.0.8',
   'ecom-platform'       => '= 0.1.30',
   'ecom-docs'           => '= 0.1.7',
   'emr'                 => '= 0.1.5',
-  'library'             => '= 0.0.31',
+  'library'             => '= 0.0.39',
   'proxy'               => '= 0.1.12'
 })
 
@@ -16,7 +16,7 @@ override_attributes(
     "vcs_branch" => "uat",
     "cname" =>'staging.frankross.in',
     "environment_variables" => {
-      :APP_NAME => "'EFR e-Com (Staging)'",
+      :APP_NAME => "'EFR e-Com (staging)'",
       :AWS_S3_BUCKET_NAME=>"emami-staging",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
@@ -26,6 +26,7 @@ override_attributes(
     "vcs_branch" => "master",
     "cname" =>'emr-staging.frankross.in',
     "environment_variables" => {
+      :APP_NAME => "'EMR (staging)'"
     }
   },
   "ecom-docs" => {
