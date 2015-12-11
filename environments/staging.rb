@@ -16,7 +16,7 @@ override_attributes(
     "vcs_branch" => "uat",
     "cname" =>'staging.frankross.in',
     "environment_variables" => {
-      :APP_NAME => "'EFR e-Com (Staging)'",
+      :APP_NAME => "'EFR e-Com (staging)'",
       :AWS_S3_BUCKET_NAME=>"emami-staging",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
@@ -26,6 +26,7 @@ override_attributes(
     "vcs_branch" => "master",
     "cname" =>'emr-staging.frankross.in',
     "environment_variables" => {
+      :APP_NAME => "'EMR (staging)'"
     }
   },
   "ecom-docs" => {

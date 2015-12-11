@@ -26,6 +26,7 @@ override_attributes(
     "vcs_branch" => "master",
     "cname" =>'emr.frankross.in',
     "environment_variables" => {
+      :APP_NAME => "'EMR (production)'"
     }
   },
   "ecom-docs" => {
