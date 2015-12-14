@@ -44,7 +44,7 @@ DEPENDENCIES
 
 GRAPH
   apt (2.8.2)
-  base (0.0.8)
+  base (0.0.9)
     datadog (>= 0.0.0)
     newrelic (>= 0.0.0)
     ntp (>= 0.0.0)
@@ -65,7 +65,7 @@ GRAPH
   ecom-docs (0.1.7)
     base (>= 0.0.0)
     library (>= 0.0.0)
-  ecom-platform (0.1.29)
+  ecom-platform (0.1.30)
     base (>= 0.0.0)
     library (>= 0.0.0)
   emami_memcached (0.1.0)
