@@ -3,17 +3,17 @@ description 'staging environment file'
 
 cookbook_versions ({
   'base'                => '= 0.0.7',
-  'ecom-platform'       => '= 0.1.27',
+  'ecom-platform'       => '= 0.1.28',
   'ecom-docs'           => '= 0.1.8',
   'emr'                 => '= 0.1.7',
-  'library'             => '= 0.0.36',
+  'library'             => '= 0.0.37',
   'proxy'               => '= 0.1.16'
 })
 
 override_attributes(
 
   "ecom-platform" => {
-    "vcs_branch" => "uat",
+    "vcs_branch" => "upgrade-rails",
     "cname" =>'staging.frankross.in',
     "environment_variables" => {
       :APP_NAME => "'EFR e-Com (Staging)'",

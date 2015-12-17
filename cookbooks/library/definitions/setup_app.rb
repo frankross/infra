@@ -74,7 +74,7 @@ define :setup_app do
   execute "ruby-install" do
     command "aws s3 cp #{node["ruby"]["s3_location"]} ./;dpkg -i #{node["ruby"]["s3_location"].split("/")[-1]}"
     cwd Chef::Config['file_cache_path']
-    not_if "dpkg -l | grep ruby"
+    not_if "dpkg -l | grep ruby | grep 2.2.3"
   end
 
   execute "install bundler" do
