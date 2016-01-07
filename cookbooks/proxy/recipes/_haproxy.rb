@@ -70,6 +70,13 @@ template "/etc/haproxy/haproxy.cfg" do
   notifies :restart, "service[haproxy]", :delayed
 end
 
+template "/etc/rsyslog.d/haproxy_log.conf" do
+  source "haproxy/haproxy.logconf.erb"
+  mode "644"
+  action :create
+  notifies :restart, "service[rsyslog]", :delayed
+end
+
 template '/etc/dd-agent/conf.d/haproxy.yaml' do
   source 'datadog/haproxy.yaml.erb'
   owner 'dd-agent'
