@@ -27,6 +27,9 @@ DEPENDENCIES
     revision: 207eb2b81460a18846f0d183dce129d0ed97e42c
   nat_server
     path: cookbooks/nat_server
+  newrelic
+    git: https://github.com/escapestudios-cookbooks/newrelic.git
+    revision: 95d642e0403fe0282458a327f2249aea626ea821
   postgresql
     git: https://github.com/hw-cookbooks/postgresql.git
     revision: 6584a0c05572b52992723705a4afc827e63016ba
@@ -42,8 +45,9 @@ DEPENDENCIES
 
 GRAPH
   apt (2.9.2)
-  base (0.0.7)
+  base (1.0.0)
     datadog (>= 0.0.0)
+    newrelic (>= 0.0.0)
     ntp (>= 0.0.0)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
@@ -53,6 +57,7 @@ GRAPH
   chef-sugar (3.1.1)
   chef_handler (1.1.9)
   compat_resource (12.5.14)
+  curl (2.0.1)
   datadog (1.1.1)
     apt (>= 0.0.0)
     chef_handler (~> 1.1.0)
@@ -62,7 +67,7 @@ GRAPH
   ecom-docs (0.1.8)
     base (>= 0.0.0)
     library (>= 0.0.0)
-  ecom-platform (0.1.28)
+  ecom-platform (1.0.0)
     base (>= 0.0.0)
     library (>= 0.0.0)
   emami_memcached (0.1.0)
@@ -92,7 +97,7 @@ GRAPH
     compat_resource (>= 0.0.0)
   java (1.36.0)
     apt (>= 0.0.0)
-  library (0.0.37)
+  library (1.0.0)
     datadog (>= 0.0.0)
     logrotate (>= 0.0.0)
     nginx (>= 0.0.0)
@@ -105,6 +110,11 @@ GRAPH
   nat_server (0.1.13)
     iptables (>= 0.0.0)
     vpn (>= 0.0.0)
+  newrelic (2.17.0)
+    apt (~> 2.0)
+    curl (>= 0.0.0)
+    python (>= 0.0.0)
+    yum (~> 3.0)
   nginx (2.7.6)
     apt (~> 2.2)
     bluepill (~> 2.3)
@@ -124,7 +134,7 @@ GRAPH
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
     openssl (~> 4.0)
-  proxy (0.1.16)
+  proxy (1.0.0)
     datadog (>= 0.0.0)
     iptables (>= 0.0.0)
     library (>= 0.0.0)
