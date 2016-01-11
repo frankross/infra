@@ -2,12 +2,12 @@ name 'staging'
 description 'staging environment file'
 
 cookbook_versions ({
-  'base'                => '= 0.0.7',
-  'ecom-platform'       => '= 0.1.28',
+  'base'                => '= 1.0.0',
+  'ecom-platform'       => '= 1.0.0',
   'ecom-docs'           => '= 0.1.8',
   'emr'                 => '= 0.1.7',
-  'library'             => '= 0.0.37',
-  'proxy'               => '= 0.1.16'
+  'library'             => '= 1.0.0',
+  'proxy'               => '= 1.0.0'
 })
 
 override_attributes(

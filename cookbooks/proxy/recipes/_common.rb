@@ -15,7 +15,7 @@ include_recipe "proxy::_keepalived"
 include_recipe "proxy::monitoring_server"
 
 papertrail "app" do
-  log_file ["/var/log/haproxy/*.log"]
+  log_file ["/var/log/haproxy.log"]
 end
 
 monit "haproxy"

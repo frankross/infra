@@ -21,3 +21,10 @@ cron "update categories active variants" do
   user 'deploy'
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:active_variants_in_category >> #{app_location}/current/log/cron.log 2>&1'"
 end
+
+cron "sync emr digitization request processing availability" do
+  minute "30"
+  hour "*"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake emr:sync_digitization_processing_available_at >> #{app_location}/current/log/cron.log 2>&1'"
+end

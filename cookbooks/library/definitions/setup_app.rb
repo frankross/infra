@@ -27,7 +27,7 @@ define :setup_app do
     package pkg
   end
 
-  ["releases","shared/gems", "/shared/config","/shared/pids","/shared/sockets","/shared/tmp"].each do |dir|
+  ["releases","shared/gems", "shared/log", "/shared/config","/shared/pids","/shared/sockets","/shared/tmp"].each do |dir|
     directory "#{app_location}/#{dir}" do
       recursive true
       owner app_user
@@ -74,11 +74,17 @@ define :setup_app do
   execute "ruby-install" do
     command "aws s3 cp #{node["ruby"]["s3_location"]} ./;dpkg -i #{node["ruby"]["s3_location"].split("/")[-1]}"
     cwd Chef::Config['file_cache_path']
-    not_if "dpkg -l | grep ruby | grep 2.2.3"
+    not_if "dpkg -l | grep ruby"
   end
 
   execute "install bundler" do
     command "gem install bundler"
+  end
+
+  link "#{release_dir}/log" do
+    to "#{app_location}/shared/log"
+    user app_user
+    group app_group
   end
 
   link "#{release_dir}/gems" do
