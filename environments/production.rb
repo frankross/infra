@@ -36,7 +36,7 @@ override_attributes(
   },
   :proxy => {
     :aws => {
-      :eip=>'52.74.129.118'
+      :eip=>'52.74.97.11'
     },
     :frontend_servers => [
       {
