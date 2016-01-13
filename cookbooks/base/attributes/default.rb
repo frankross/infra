@@ -1,7 +1,7 @@
 default[:datadog][:api_key]          = "9f8eedcd843ebe6780aee73902f2ee71"
 default[:datadog][:application_key]  = "cbb3156bbd328cc35496dbc2cc2db202af82f1e7"
 
-default[:newrelic][:server_monitoring][:license] = 'incorrect_key_b959fb74d9ac626cea10fb527dbf8b4c68b5e068'
+default[:newrelic][:server_monitoring][:license] = 'b959fb74d9ac626cea10fb527dbf8b4c68b5e068'
 
 override['datadog']['tags'] = []
 case node.platform_family
