@@ -13,11 +13,11 @@ cookbook_versions ({
 override_attributes(
 
   "ecom-platform" => {
-    "vcs_branch" => "upgrade-rails",
+    "vcs_branch" => "uat",
     "cname" =>'staging.frankross.in',
     "environment_variables" => {
       :APP_NAME => "'EFR e-Com (Staging)'",
-      :AWS_S3_BUCKET_NAME=>"emami-staging",
+      :AWS_S3_BUCKET_NAME=>"emami-staging-2",
       :CIRCLE_ARTIFACTS=>true,
       :NEW_RELIC_AGENT_ENABLED => true
     }
