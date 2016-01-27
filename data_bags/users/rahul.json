@@ -1,0 +1,10 @@
+{
+  "id"        : "rahul",
+  "comment"   : "rahul",
+  "home"      : "/home/rahul",
+  "groups"    : ["sysadmin"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDd/DiP6+8gwmCPnG2eJYDH4MEjW1sKkD+HhNXfKZODCPm8V4fzp7teXw4yFNtIPxawiRbazlWT/LDYIGeiyqwoHKSGAS7wsT5EbcToemaPHuXsCd47Wt6OEsS34qJWLFXvAQVXPEGlcbCdkbWav/s9EWMOIbuqv9AgzLnS8kfO1rdwLCrhwT+4gtOo9+9PO4INkPyHERdCrJ0XnIjQxPBJLYNSs0U0n7Pumw5lpfUiI9JP9yuElCiqtBLJRWRNYEs5OJI2rYZ2l+iYzsQidmHBmx9ZF5uc0yVbrs2qyrXEYTOBfGqJDZwhy4zdMfshqV32lgACOJxwf34G/wL8mGzv"
+  ]
+}
