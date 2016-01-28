@@ -33,7 +33,7 @@ worker_queue_map = {
   :algolia => 2,
   :download => 1,
   :notifications => 1,
-  :* => 1
+  :* => 2
 }
 
 queue_config = ""
