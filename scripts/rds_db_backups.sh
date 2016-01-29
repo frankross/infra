@@ -15,7 +15,7 @@ tar -zcf $BACKUP_NAME.sql.tar $BACKUP_NAME.sql
 
 echo "compression complete..; preparing to upload to s3"
 echo "--------------------- S3 CP START ---------------------------------"
-aws s3 cp --debug $BACKUP_NAME.sql.tar s3://emami-rds-backups/$DB_NAME/$2/
+aws s3 cp --debug $BACKUP_NAME.sql.tar s3://emami-rds-backups-2/$DB_NAME/$2/
 echo "--------------------- S3 CP STOP  ---------------------------------"
 
 echo "remove generated dump file..;"
@@ -23,4 +23,4 @@ rm -f $BACKUP_NAME*
 
 echo "remove old backup"
 echo "--------------------- S3 RM START ---------------------------------"
-aws s3 ls --debug s3://emami-rds-backups/$DB_NAME/$2/ | sort | head $3 | awk '{print $4}' |xargs -I {} aws s3 rm --debug s3://emami-rds-backups/$DB_NAME/$2/{}
+aws s3 ls --debug s3://emami-rds-backups-2/$DB_NAME/$2/ | sort | head $3 | awk '{print $4}' |xargs -I {} aws s3 rm --debug s3://emami-rds-backups-2/$DB_NAME/$2/{}
