@@ -3,7 +3,7 @@ description 'production environment file'
 
 cookbook_versions ({
   'base'                => '= 1.0.0',
-  'ecom-platform'       => '= 1.0.1',
+  'ecom-platform'       => '= 1.0.4',
   'ecom-docs'           => '= 0.1.8',
   'emr'                 => '= 0.1.7',
   'library'             => '= 1.0.0',
