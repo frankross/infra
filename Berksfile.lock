@@ -67,7 +67,7 @@ GRAPH
   ecom-docs (0.1.8)
     base (>= 0.0.0)
     library (>= 0.0.0)
-  ecom-platform (1.0.2)
+  ecom-platform (1.0.4)
     base (>= 0.0.0)
     library (>= 0.0.0)
   emami_memcached (0.1.0)
