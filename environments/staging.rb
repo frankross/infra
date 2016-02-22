@@ -23,7 +23,7 @@ override_attributes(
     }
   },
   "emr" => {
-    "vcs_branch" => "master",
+    "vcs_branch" => "staging",
     "cname" =>'emr-staging.frankross.in',
     "environment_variables" => {
     }
