@@ -23,7 +23,7 @@ override_attributes(
     }
   },
   "emr" => {
-    "vcs_branch" => "master",
+    "vcs_branch" => "production",
     "cname" =>'emr.frankross.in',
     "environment_variables" => {
     }
