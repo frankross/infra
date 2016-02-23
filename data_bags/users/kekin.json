@@ -1,0 +1,10 @@
+{
+  "id"        : "kekin",
+  "comment"   : "kekin",
+  "home"      : "/home/kekin",
+  "groups"    : ["sysadmin"],
+  "shell"     : "\/bin\/bash",
+  "ssh_keys"  : [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBlJFt+0SZ5x/PF6YqtRcJKeY3gZXEBz0FXIcCs7X9/x8I0MHWzJvM9tZh9YpWNa5pibSBUx5TvC0xT6iJ6Sq/bDyiLYiDvVSG3lC9LkEqB//kQ/vh4YYLm9YIXbW5TsZR4aiO5xWg1a91osJbnR8Y/BEkTuF7gzGVM2hZDfFKtGRkE7H5hU3agP2g8x1ZiVxc+Ub/Jo+fkP9wfsE+RU9aC8dRsha3jZgHGlyvzQ42MPn0CoWKj1WarWiUJxs2eYqhlHkT7DlwffgXjB/DIL1jOuK0oZSYhJgRReCDTOZ/irZ3tFTu631GWzoczXAGUdPBml6+jD2P6mn+6+6U763bcSycKiSy+3qRRgyoKQonwdG7TDfGkXomaS1qSdakKbH4OjieK9KRjB7wSgW+7+5Gx2LYvmNEpbgwyCq+D8N+NUJlIpEpVKcIjKwfMAZzwQxGrydAyxflJkVpo9FnROYnEqnecfwbuq+LCSbUav3tPUOFR1mq/xu1H6rBTGHRQqg1/re1F2mWXgnPWq9G8FJdlSCI6VFqjj8a2THXVKDygAJTHF5aiiSZeVI28iP/xZgGLgUOGQg5jfZiA60td8A5YfY8dsJS81M9ixISN4VgxA2RggX01i4dukmzcLG4c1BcSEXmpk13gwPuqOV0nVuOBjkIRhYKjecPZBLXGtiOqQ== kekin@bigbinary.com"
+  ]
+}
