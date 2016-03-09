@@ -36,10 +36,18 @@ ii)Install nginx and configuration
 3) delayed_jobs
 
 This recipe include _common.rb
-Then it sets up delayed jobs , creates an init.d script and runs
-delayed jobs
+Then it sets up delayed jobs , creates an init.d script and runs all the jobs on one server
 
 
-4) cron_jobs
+4) delayed_job_1
+This recipe include _common.rb
+Then it sets up delayed jobs , creates an init.d script and runs only algolia, notifications and sms jobs on the server
+
+
+4) delayed_job_2
+This recipe include _common.rb
+Then it sets up delayed jobs , creates an init.d script and runs only upload, download and default jobs on the server
+
+5) cron_jobs
 This is to create cron tabs for sync delivery slots and sync
 distribution center
