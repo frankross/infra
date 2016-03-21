@@ -28,3 +28,10 @@ cron "sync emr digitization request processing availability" do
   user 'deploy'
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake emr:sync_digitization_processing_available_at >> #{app_location}/current/log/cron.log 2>&1'"
 end
+
+cron "Run algolia health check program every 30 mins to verify the settings on the algolia server" do
+  minute "30"
+  hour "*"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake algolia:index_check >> #{app_location}/current/log/cron.log 2>&1'"
+end
