@@ -28,3 +28,11 @@ cron "sync emr digitization request processing availability" do
   user 'deploy'
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake emr:sync_digitization_processing_available_at >> #{app_location}/current/log/cron.log 2>&1'"
 end
+
+cron "vinculum upload_inventory_data" do
+  minute "15"
+  hour "16"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake vinculum:upload_inventory_data >> #{app_location}/current/log/cron.log 2>&1'"
+end
+
