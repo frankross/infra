@@ -26,8 +26,6 @@ override_attributes(
     "vcs_branch" => "staging",
     "cname" =>'emr-staging.frankross.in',
     "environment_variables" => {
-    "ALGOLIA_SEARCH_INDEX_SUFFIX" => "Mobile_staging_1_"
-
     }
   },
   "ecom-docs" => {
