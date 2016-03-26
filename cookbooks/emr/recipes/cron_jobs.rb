@@ -16,8 +16,8 @@ cron "dispatch_callbacks" do
 end
 
 cron "product_variant_sync" do
-  minute "*"
-  hour "6"
+  minute "30"
+  hour "*"
   user "deploy"
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake product_variant_sync >> #{app_location}/current/log/cron.log 2>&1'"
 end
