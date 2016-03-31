@@ -36,3 +36,9 @@ cron "vinculum upload_inventory_data" do
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake vinculum:upload_inventory_data >> #{app_location}/current/log/cron.log 2>&1'"
 end
 
+cron "auto cancel orders" do
+  minute "5"
+  hour "*"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:auto_cancel >> #{app_location}/current/log/cron.log 2>&1'"
+end
