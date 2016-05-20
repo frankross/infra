@@ -1,21 +1,6 @@
 {
   "id": "awscli",
-  "secret_key": {
-    "encrypted_data": "WcwZvtBpWTsRhRikZhr1hyaDe/YLX7AtsL3rVeLdW1v9DPBeBBqopysGZq7F\nuaaJNCzgo8cajtJ9TQ+D2B+ydA==\n",
-    "iv": "FCYjwbJnmMQbiiZKsN1Z4A==\n",
-    "version": 1,
-    "cipher": "aes-256-cbc"
-  },
-  "access_key": {
-    "encrypted_data": "9KnG1VH1z7XD2DHkuJQFzRmRaTlCPRxQfS8ZzRFsKqsrbkREgqhqLVn1D5z8\nSZ3N\n",
-    "iv": "hJoOmZGhhYfwv+YH/uWGDA==\n",
-    "version": 1,
-    "cipher": "aes-256-cbc"
-  },
-  "region": {
-    "encrypted_data": "4tkaz2v72fliyH83GnUXnXU5KrTJDmXwkQgmgZAi0IMnRsdPaM/6ZaIU18TC\nMOkP\n",
-    "iv": "fqmcHqO/NQkV7CmbI3gJCQ==\n",
-    "version": 1,
-    "cipher": "aes-256-cbc"
-  }
+  "secret_key": "kOe3gy13td+3KexAeWDSnP99fp2pWkDtQt5R9TBg",
+  "access_key": "AKIAIFH24SKFMDLYKFEQ",
+  "region": "ap-southeast-1"
 }
