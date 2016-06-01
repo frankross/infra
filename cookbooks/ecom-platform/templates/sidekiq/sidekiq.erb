@@ -1,0 +1,79 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:  sidekiq
+# Required-Start:$all
+# Required-Stop: $all
+# Default-Start: 2 3 4 5
+# Default-Stop:  0 1 6
+# Short-Description: sidekiq application service
+# Description:  sidekiq application service
+### END INIT INFO
+
+APP_USER="<%=@user%>"
+APP_GROUP="<%=@group%>"
+APP="sidekiq"
+APP_PATH="<%=@project_path%>/current"
+
+execute() {
+  sudo -u $APP_USER -H bash -l -c "$1"
+  }
+
+start() {
+    cd $APP_PATH
+    su - $APP_USER -c "cd $APP_PATH;source /etc/default/<%=@app%>.conf; RAILS_ENV=production bundle exec sidekiq -C config/sidekiq.yml -d -L  $APP_PATH/log/sidekiq.log -e production"
+
+    if [ $? -eq 0 ]; then
+        sleep 2
+        echo "$APP started successfully with PID "
+    else
+        echo "$APP could not start. Please check logs."
+        fi
+}
+
+stop() {
+      if [ $(ps aux |grep 'sidekiq' | grep -v grep | wc -l) -eq 0 ];then
+          echo "Application $APP is already stopped ";
+      else
+          echo "Stopping $APP process"
+          ps aux | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -15 
+      fi
+}
+
+case "$1" in
+  start)
+    echo "Starting $APP"
+    start
+    echo "$APP started."
+    ;;
+
+  stop)
+    echo "Stopping $APP"
+    stop
+    echo "$APP stopped."
+    ;;
+
+  restart)
+    echo  "Restarting $APP."
+    stop
+ #   sleep 2
+    start
+    echo "$APP restarted."
+    ;;
+
+  status)
+    if [ $(ps aux |grep 'sidekiq' | grep -v grep | wc -l) -eq 0 ];then
+      echo  "Application $APP is stopped."
+    else
+      echo  "Application $APP is running with pid: " `cat $PID_FILE`
+    fi
+    ;;
+
+  *)
+    service_name=/etc/init.d/$APP
+    echo "Usage: $service_name {start|stop|restart|status}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0
