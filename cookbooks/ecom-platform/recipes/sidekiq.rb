@@ -70,3 +70,4 @@ _logrotate "app_logs" do
     path "#{app_location}/shared/log/*.log"
   end
 
+monit "sidekiq"
