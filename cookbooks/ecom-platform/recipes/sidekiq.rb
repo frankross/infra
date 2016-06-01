@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: Sidekiq
+# Cookbook Name:: delayed_job
 # Recipe:: default
 #
 app                                  = "ecom-platform"
@@ -7,9 +7,11 @@ app_location                         = node.apps.location
 app_user                             = node.apps[:user]
 app_group                            = node.apps[:group]
 
-node.override["apps"]["init_script_name"] = "sd"
+node.override["apps"]["init_script_name"] = "sidekick"
+#node.default["monitoring"]["processes"]  = [{name: 'delayed_job', search_string: ['delayed_job']}]
 
 include_recipe "ecom-platform::_common"
+#include_recipe "sidekiq::default"
 
 app_environment_variables = {}
 app_environment_variables.merge! node["ecom-platform"].environment_variables
@@ -30,8 +32,9 @@ end
 #  group app_group
 #end
  ##           queue_config: queue_config,
-template "/etc/init.d/sd" do
-  source "sidekiq/sidekiq.erb"
+
+template "/etc/init.d/sidekick" do
+  source "sidekick/sidekick.erb"
   variables(app: app,
             user: app_user,
             group: app_group,
@@ -40,10 +43,10 @@ template "/etc/init.d/sd" do
   mode "775"
   owner app_user
   group app_group
-  notifies:restart,  "service[sd]", :delayed
+  notifies:restart,  "service[sidekick]", :delayed
 end
 
-service "sd" do
+service "sidekick" do
   supports status: true, start: true, stop: true, restart: true
   action :enable
 end
@@ -70,4 +73,4 @@ _logrotate "app_logs" do
     path "#{app_location}/shared/log/*.log"
   end
 
-monit "sd"
+monit "sidekick"
