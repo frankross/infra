@@ -7,7 +7,7 @@ app_location                         = node.apps.location
 app_user                             = node.apps[:user]
 app_group                            = node.apps[:group]
 
-node.override["apps"]["init_script_name"] = "sidekiq"
+node.override["apps"]["init_script_name"] = "sd"
 
 include_recipe "ecom-platform::_common"
 
@@ -30,7 +30,7 @@ end
 #  group app_group
 #end
  ##           queue_config: queue_config,
-template "/etc/init.d/sidekiq" do
+template "/etc/init.d/sd" do
   source "sidekiq/sidekiq.erb"
   variables(app: app,
             user: app_user,
@@ -40,10 +40,10 @@ template "/etc/init.d/sidekiq" do
   mode "775"
   owner app_user
   group app_group
-  notifies:restart,  "service[sidekiq]", :delayed
+  notifies:restart,  "service[sd]", :delayed
 end
 
-service "sidekiq" do
+service "sd" do
   supports status: true, start: true, stop: true, restart: true
   action :enable
 end
@@ -70,4 +70,4 @@ _logrotate "app_logs" do
     path "#{app_location}/shared/log/*.log"
   end
 
-monit "sidekiq"
+monit "sd"
