@@ -1,0 +1,9 @@
+check process sidekiq
+        matching "sidekiq"
+        start program = "/etc/init.d/sidekiq start" with timeout 60 seconds
+        stop program = "/etc/init.d/sidekiq stop"
+        if totalmemory > 90% for 2 cycles then restart
+        if 5 restarts with 5 cycles then timeout
+        check system sidekiq_system_memory
+        if memory usage > 70% for 2 cycles then restart
+
