@@ -1,0 +1,11 @@
+check process sidekiq
+with pidfile /srv/www/ecom-platform/shared/pids/sidekiq.pid
+group sidekiq
+        start program = "/etc/init.d/sidekick start" with timeout 60 seconds
+        stop program = "/etc/init.d/sidekick stop"
+        if totalmemory > 60%  then restart
+        if 5 restarts with 5 cycles then timeout
+        check system sidekiq_system_memory
+        if memory usage > 70% for 2 cycles then restart
+
+
