@@ -49,3 +49,10 @@ cron "auto cancel orders" do
   user 'deploy'
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:auto_cancel >> #{app_location}/current/log/cron.log 2>&1'"
 end
+
+cron "Run Cart abandonment campaign every 1 hour" do
+  minute "0"
+  hour "*"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake campaign:cart_abandonment >> #{app_location}/current/log/cron.log 2>&1'"
+end
