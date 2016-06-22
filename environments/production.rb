@@ -3,10 +3,10 @@ description 'production environment file'
 
 cookbook_versions ({
   'base'                => '= 1.0.0',
-  'ecom-platform'       => '= 1.0.8',
+  'ecom-platform'       => '= 1.1.4',
   'ecom-docs'           => '= 0.1.8',
   'emr'                 => '= 0.1.8',
-  'library'             => '= 1.0.0',
+  'library'             => '= 1.0.3',
   'proxy'               => '= 1.0.0',
   'sensu_client'        => '= 0.2.0'
 
