@@ -5,8 +5,9 @@ cookbook_versions ({
   'base'                => '= 1.0.0',
   'ecom-platform'       => '= 1.1.7',
   'ecom-docs'           => '= 0.1.8',
+  'ecom-web'           => '= 1.0.0',
   'emr'                 => '= 0.1.8',
-  'library'             => '= 1.0.3',
+  'library'             => '= 1.0.4',
   'proxy'               => '= 1.0.0',
   'sensu_client'        => '= 0.2.0'
 })
@@ -26,6 +27,11 @@ override_attributes(
   "emr" => {
     "vcs_branch" => "staging",
     "cname" =>'emr-staging.frankross.in',
+    "environment_variables" => {
+    }
+},
+  "ecom-web" => {
+    "vcs_branch" => "uat",
     "environment_variables" => {
     }
   },

@@ -1,0 +1,33 @@
+{
+  "name": "ecom-web",
+  "description": "Installs/Configures ecom-web",
+  "long_description": "This recipe install and sets up ecom-web application.\n\nExplanation of recipes\n1)_common.rb\n\nThis recipe prefix is _ because this recipe wont be used independently\nand only will be included in other recipes.\nThis recipe sets up a basic source code with database.yml which will be used both by app and delayed jobs.\n\ni)_install_awscli\nThis is a definition in library cookbook which install and configure\nawscli with creds.\nFor more information check library cookbook readme\n\nii)setup_app\nThis is a definition in library cookbook which is used to clone code\nfrom github, run bundle install and installs ruby on instance\n\niii)_configure_postgres_client \nThis run asset precompile on the instances\n\n\n2)app.rb\n\nThis recipe include _common.rb\n\ni)_asset_precompile \nThis run asset precompile on the instances\n\nii)_app_servers\nThis is used to set up \n\ni)Puma and configuration\nii)Install nginx and configuration\n\n3) delayed_jobs\n\nThis recipe include _common.rb\nThen it sets up delayed jobs , creates an init.d script and runs all the jobs on one server\n\n\n4) delayed_job_1\nThis recipe include _common.rb\nThen it sets up delayed jobs , creates an init.d script and runs only algolia, notifications and sms jobs on the server\n\n\n4) delayed_job_2\nThis recipe include _common.rb\nThen it sets up delayed jobs , creates an init.d script and runs only upload, download and default jobs on the server\n\n5) cron_jobs\nThis is to create cron tabs for sync delivery slots and sync\ndistribution center\n",
+  "maintainer": "YOUR_COMPANY_NAME",
+  "maintainer_email": "YOUR_EMAIL",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+    "library": ">= 1.0.4",
+    "base": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "1.0.0",
+  "source_url": "",
+  "issues_url": ""
+}
