@@ -5,7 +5,6 @@ define :setup_web_app do
   app_group     = "web" 
   app_user_home = "/home/web"
   app_location  = params[:app_location]
-#  app_service   = params[:app_service]
 
   user app_user do
     home "/home/#{app_user}"

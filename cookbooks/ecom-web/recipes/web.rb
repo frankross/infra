@@ -1,8 +1,8 @@
 app                              = "ecom-web"
 app_location                     = node.apps.location
-app_user = "web"
-app_group = "web"
-release_dir = "/srv/www/ecom-web/current"
+app_user			 = "web"
+app_group 			 = "web"
+release_dir 			 = "/srv/www/ecom-web/current"
 
 _install_awscli
 
@@ -14,20 +14,14 @@ execute "download secret key" do
 end.run_action(:run)
 
 secret                    = File.read "#{chef_config_path}/#{secret_file_name}"
-#settings                  = Chef::EncryptedDataBagItem.load(app,"settings",secret).to_hash[node.chef_environment]["environment_variables"]
 
 
 setup_web_app "#{app}" do
   app_location app_location
- # app_service app_service
-  #environment_variables app_environment_variables
 end
-
-
 
 link_release_web "ecom-web" do
   app_location node.apps.location
-#  app_service app_service
 end
 
 bash 'Execute node commands' do 
@@ -38,8 +32,6 @@ bash 'Execute node commands' do
   HOME='/home/web'
   sudo npm install
   sudo bower install --allow-root
-  gulp build 
-  gulp styles 
-  gulp scripts
+  gulp stage-build
   EOH
 end
