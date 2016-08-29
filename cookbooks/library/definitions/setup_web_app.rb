@@ -29,18 +29,6 @@ define :setup_web_app do
     apps [app]
   end
 
-#  ['libxml2-dev','libxslt1-dev','libpcre3-dev',"libqt4-dev","zlib1g-dev","build-essential","libpq-dev","libpq5","nodejs"].each do |pkg|
-#    package pkg
-  #end
-
-#  ["releases","shared/gems", "shared/log", "/shared/config","/shared/pids","/shared/sockets","/shared/tmp"].each do |dir|
-#    directory "#{app_location}/#{dir}" do
-#      recursive true
-#      owner app_user
-#      group app_group
-#      mode 00755
- #   end
- # end
 
   execute "apt-get install -y build-essential"
   package "libsqlite3-dev"
@@ -78,45 +66,4 @@ define :setup_web_app do
     cwd "#{node.apps.location}/releases"
   end
 
-#  execute "ruby-install" do
-#    command "aws s3 cp #{node["ruby"]["s3_location"]} ./;dpkg -i #{node["ruby"]["s3_location"].split("/")[-1]}"
-#    cwd Chef::Config['file_cache_path']
-#    not_if "dpkg -l | grep ruby"
-#  end
-
-#  execute "install bundler" do
-#    command "gem install bundler"
-#  end
-
- # link "#{release_dir}/log" do
- #   to "#{app_location}/shared/log"
- #   user app_user
- #   group app_group
-  #end
-
-#  link "#{release_dir}/gems" do
-#    to "#{app_location}/shared/gems"
-#    user app_user
-#    group app_group
-#  end
-
-#  execute "npm install" do
-#    command "npm install"
-#    user app_user
-#    group app_group
-#    cwd release_dir
-#  end
-#  execute "bower install" do
-#    command "sudo bower install --allow-root"
-#    user app_user
-#    group app_group
-#    cwd release_dir
-#  end
-#
-#  execute "gulp install" do
-#    command "gulp build && gulp styles && gulp scripts"
-#    user app_user
-#    group app_group
-#    cwd release_dir
-#  end
 end
