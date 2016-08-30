@@ -28,6 +28,7 @@ override_attributes(
     "vcs_branch" => "staging",
     "cname" =>'emr-staging.frankross.in',
     "environment_variables" => {
+      :NEW_RELIC_AGENT_ENABLED => false
     }
 },
   "ecom-web" => {
