@@ -21,7 +21,7 @@ override_attributes(
       :APP_NAME => "'EFR e-Com (Staging)'",
       :AWS_S3_BUCKET_NAME=>"emami-staging-2",
       :CIRCLE_ARTIFACTS=>true,
-      :NEW_RELIC_AGENT_ENABLED => true
+      :NEW_RELIC_AGENT_ENABLED => false
     }
   },
   "emr" => {
@@ -33,6 +33,7 @@ override_attributes(
   "ecom-web" => {
     "vcs_branch" => "uat",
     "environment_variables" => {
+      :NEW_RELIC_AGENT_ENABLED => false
     }
   },
   "ecom-docs" => {
