@@ -21,7 +21,8 @@ override_attributes(
       :APP_NAME => "'EFR e-Com (Staging)'",
       :AWS_S3_BUCKET_NAME=>"emami-staging-2",
       :CIRCLE_ARTIFACTS=>true,
-      :NEW_RELIC_AGENT_ENABLED => false
+      :NEW_RELIC_AGENT_ENABLED => false,
+      :DOMAIN => "http://staging.frankross.in"
     }
   },
   "emr" => {
