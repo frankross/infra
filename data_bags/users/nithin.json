@@ -1,0 +1,12 @@
+{
+  "id": "nithin",
+  "comment": "nithin",
+  "home": "/home/nithin",
+  "groups": [
+    "sysadmin"
+  ],
+  "shell": "/bin/bash",
+  "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWF2kE6fQpLB3UZCiEQarZtSyxVvqu0xpC3xbv/AM6ltBejl94J/gpIsuHrZvVYwFpJvpdStT3CV9fMnoynsNizNLuQ9jV+Cn+EE+WnNxxnYysOXQAibGcOUgBGBpGkWSVkPYbXJCibzavL759DCvEykjOWaLh7GeYgDgmn+5CwDJLMGEDuccw86/BVs2A6f4EdnANOofBJyIK27IFNR4eTRMM0smtCVIUeq5c2I+GIfq203fV2WkJisbdRTbLFdimpOHeR6kR0PMhbFJMzAkrRisxTwShnr07ZJ2uOrnb6SDo44xxt1cWNDm8AJZ330TD9mFjmRArnI2CtaOCPBH1 nithin@EFR-MP12NF96"
+  ]
+}
