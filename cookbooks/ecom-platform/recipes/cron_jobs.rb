@@ -64,9 +64,9 @@ cron "Run Cart abandonment campaign every 1 hour" do
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake campaign:cart_abandonment >> #{app_location}/current/log/cron.log 2>&1'"
 end
 
-cron "run refill reminder, daily once" do
-  minute "0"
-  hour "10"
+cron "run refill reminder, daily once at 7pm IST" do
+  minute "30"
+  hour "13"
   user 'deploy'
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:refill_reminders >> #{app_location}/current/log/cron.log 2>&1'"
 end
