@@ -26,7 +26,7 @@ override_attributes(
     }
   },
   "emr" => {
-    "vcs_branch" => "staging",
+    "vcs_branch" => "staging-current",
     "cname" =>'emr-staging.frankross.in',
     "environment_variables" => {
       :NEW_RELIC_AGENT_ENABLED => false
