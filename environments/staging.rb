@@ -7,7 +7,7 @@ cookbook_versions ({
   'ecom-docs'           => '= 0.1.8',
   'ecom-web'           => '= 1.0.0',
   'emr'                 => '= 0.1.8',
-  'library'             => '= 1.0.4',
+  'library'             => '= 1.0.5',
   'proxy'               => '= 1.0.0',
   'sensu_client'        => '= 0.2.0'
 })
