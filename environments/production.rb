@@ -37,13 +37,12 @@ override_attributes(
       :SECRET_KEY_BASE =>'aacaea4f251731969a3d4623d36eb9d7bf908683c00479bab517831e6452889a15576a60d3f406b1af6a5016f3290c7a2c9f12adbb1b80817eb8825bbc1d2a23',
     }
   },
-
   "ecom-web" => {
     "vcs_branch" => "uat",
     "environment_variables" => {
       :NEW_RELIC_AGENT_ENABLED => false
     }
-
+  },
   :proxy => {
     :aws => {
       :eip=>'52.74.97.11'
