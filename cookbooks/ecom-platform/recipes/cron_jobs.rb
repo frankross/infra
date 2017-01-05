@@ -70,3 +70,17 @@ cron "run refill reminder, daily once at 7pm IST" do
   user 'deploy'
   command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:refill_reminders >> #{app_location}/current/log/cron.log 2>&1'"
 end
+
+cron "Run ecogreen Order list sync alert" do
+  minute "*/4"
+  hour "*"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:order_list_sync_alerts >> #{app_location}/current/log/cron.log 2>&1'"
+end
+
+cron "Run ecogreen Variant update sync alert" do
+  minute "*/5"
+  hour "*"
+  user 'deploy'
+  command "/bin/bash -l -c 'cd #{app_location}/current;source /etc/default/#{app}.conf;RAILS_ENV=production bundle exec rake scheduled:variant_update_sync_alerts >> #{app_location}/current/log/cron.log 2>&1'"
+end
