@@ -28,6 +28,18 @@ define :setup_web_app do
     apps [app]
   end
 
+#  ['libxml2-dev','libxslt1-dev','libpcre3-dev',"libqt4-dev","zlib1g-dev","build-essential","libpq-dev","libpq5","nodejs"].each do |pkg|
+#    package pkg
+  #end
+
+  ["releases","shared/log", "/shared/config","/shared/pids","/shared/sockets","/shared/tmp"].each do |dir|
+    directory "#{app_location}/#{dir}" do
+      recursive true
+      owner app_user
+      group app_group
+      mode 00755
+    end
+  end
 
   execute "apt-get install -y build-essential"
   package "libsqlite3-dev"
@@ -65,4 +77,22 @@ define :setup_web_app do
     cwd "#{node.apps.location}/releases"
   end
 
+#    command "npm install"
+#    user app_user
+#    group app_group
+#    cwd release_dir
+#  end
+#  execute "bower install" do
+#    command "sudo bower install --allow-root"
+#    user app_user
+#    group app_group
+#    cwd release_dir
+#  end
+#
+#  execute "gulp install" do
+#    command "gulp build && gulp styles && gulp scripts"
+#    user app_user
+#    group app_group
+#    cwd release_dir
+#  end
 end
