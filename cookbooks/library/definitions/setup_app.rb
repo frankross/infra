@@ -23,7 +23,7 @@ define :setup_app do
     apps [app]
   end
 
-  ['libxml2-dev','libxslt1-dev','libpcre3-dev',"libqt4-dev","zlib1g-dev","build-essential","libpq-dev","libpq5","nodejs"].each do |pkg|
+  ['libxml2-dev','libxslt1-dev','libpcre3-dev',"libqt4-dev","zlib1g-dev","build-essential","libpq-dev","libpq5","nodejs","pngquant"].each do |pkg|
     package pkg
   end
 
