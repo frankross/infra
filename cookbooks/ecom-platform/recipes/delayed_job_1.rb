@@ -30,7 +30,8 @@ end
 worker_queue_map = {
   :sms => 2,
   :algolia => 2,
-  :notifications => 1
+  :notifications => 1,
+  :customer_report_download => 1
 }
 
 queue_config = ""
